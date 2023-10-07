@@ -1,17 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://cg4b02c8rrycv"]
+[gd_scene load_steps=4 format=3 uid="uid://cg4b02c8rrycv"]
 
 [ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="1_27jsg"]
 [ext_resource type="Script" path="res://Scripts/LoadingScreen.cs" id="1_c8xyw"]
 
-[node name="Loading Screen" type="Control" node_paths=PackedStringArray("progressBar")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sb5bq"]
+
+[node name="Loading Screen" type="Control" node_paths=PackedStringArray("progressBar", "loadingLabel", "pressAnyKeyLabel", "tipsLabel")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_27jsg")
 script = ExtResource("1_c8xyw")
-progressBar = NodePath("Panel/Control/ProgressBar")
+progressBar = NodePath("ProgressBar")
+loadingLabel = NodePath("Loading")
+pressAnyKeyLabel = NodePath("PressAnyKey")
+waitForInputOnLoad = true
+tips = PackedStringArray("I am a tip.", "I am helpful.", "Good luck!")
+tipsLabel = NodePath("Tips")
+metadata/_edit_vertical_guides_ = [1116.0, 37.0]
+metadata/_edit_horizontal_guides_ = [545.0, 497.0]
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -21,31 +32,67 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Panel"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme = ExtResource("1_27jsg")
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+anchor_top = 0.997222
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -88.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+metadata/_edit_use_anchors_ = true
 
-[node name="ProgressBar" type="ProgressBar" parent="Panel/Control"]
-layout_mode = 1
-anchors_preset = 12
+[node name="Loading" type="Label" parent="."]
+layout_mode = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -150.0
+offset_right = 280.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PressAnyKey" type="Label" parent="."]
+visible = false
+layout_mode = 2
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 516.0
-offset_right = 1077.0
-offset_bottom = 549.0
+offset_left = -280.0
+offset_top = -150.0
+offset_right = -40.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "Press any key to continue"
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Panel/Control"]
+[node name="Tips" type="Label" parent="."]
 layout_mode = 1
-offset_left = 22.0
-offset_top = 449.0
-offset_right = 154.0
-offset_bottom = 519.0
-text = "Loading"
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -295.0
+offset_top = -138.0
+offset_right = 295.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_sb5bq")
+text = "I am a tip"
 horizontal_alignment = 1
 vertical_alignment = 1

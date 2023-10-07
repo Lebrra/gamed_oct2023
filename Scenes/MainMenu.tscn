@@ -7,25 +7,48 @@
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7dma2")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Loading Screen" parent="." instance=ExtResource("1_3qium")]
 visible = false
 layout_mode = 1
-waitForInputOnLoad = true
+metadata/_edit_vertical_guides_ = [1116.0, 26.0]
+metadata/_edit_horizontal_guides_ = [545.0]
 
 [node name="Scene Selection" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-theme = ExtResource("1_7dma2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Scene 1 Button" type="Button" parent="Scene Selection" node_paths=PackedStringArray("controlsToHide", "loadingScreen")]
-layout_mode = 0
-offset_left = 154.0
-offset_top = 53.0
-offset_right = 323.0
-offset_bottom = 98.0
-tooltip_text = "I am a tool tip :)"
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.5
+offset_top = -127.0
+offset_right = 84.5
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Scene 1"
 icon = ExtResource("2_ugraa")
 expand_icon = true
@@ -34,20 +57,20 @@ levelPath = "res://Scenes/TestScene.tscn"
 controlsToHide = [NodePath("..")]
 loadingScreen = NodePath("../../Loading Screen")
 
-[node name="Button" type="Button" parent="Scene Selection"]
-layout_mode = 0
-offset_left = 313.0
-offset_top = 146.0
-offset_right = 566.0
-offset_bottom = 191.0
-text = "Click for cool stuff"
-
-[node name="ProgressBar" type="ProgressBar" parent="Scene Selection"]
-layout_mode = 0
-offset_left = 217.0
-offset_top = 243.0
-offset_right = 440.0
-offset_bottom = 270.0
-value = 38.85
+[node name="Label" type="Label" parent="Scene Selection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -162.0
+offset_top = -232.0
+offset_right = 162.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Level Select"
+horizontal_alignment = 1
 
 [connection signal="button_down" from="Scene Selection/Scene 1 Button" to="Scene Selection/Scene 1 Button" method="_on_button_down"]
