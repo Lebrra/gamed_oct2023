@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://be8h6q8tuik71"
+path="res://.godot/imported/AnyConv.com__Ouvert.obj-b08c6443a495c656aab4b2bd2c7d1d81.mesh"
+
+[deps]
+
+files=["res://.godot/imported/AnyConv.com__Ouvert.obj-b08c6443a495c656aab4b2bd2c7d1d81.mesh"]
+
+source_file="res://Art/Character/Mesh/AnyConv.com__Ouvert.obj"
+dest_files=["res://.godot/imported/AnyConv.com__Ouvert.obj-b08c6443a495c656aab4b2bd2c7d1d81.mesh", "res://.godot/imported/AnyConv.com__Ouvert.obj-b08c6443a495c656aab4b2bd2c7d1d81.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
