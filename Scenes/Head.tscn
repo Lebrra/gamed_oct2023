@@ -1,0 +1,126 @@
+[gd_scene load_steps=24 format=3 uid="uid://3yey8v6by1ye"]
+
+[ext_resource type="Texture2D" uid="uid://4rih84a2junx" path="res://icon.svg" id="1_li3ow"]
+[ext_resource type="Script" path="res://Scripts/Head.cs" id="1_m2d4m"]
+[ext_resource type="Script" path="res://Scenes/Slingshot.gd" id="2_wnkha"]
+[ext_resource type="Texture2D" uid="uid://d3sdrwgw5yu8w" path="res://Art/Character/Ouvert_body.png" id="3_yo8uo"]
+[ext_resource type="Texture2D" uid="uid://w347245cxeob" path="res://Art/Character/Ouvert_eyes.png" id="4_i4vrn"]
+[ext_resource type="Texture2D" uid="uid://d0thdi8aawymh" path="res://Art/Character/Ouvert_pupils.png" id="5_41m72"]
+[ext_resource type="Texture2D" uid="uid://b6c7fq5wcit0s" path="res://Art/Character/Ouvert_legs.png" id="6_we2p4"]
+[ext_resource type="Script" path="res://Scripts/Pole.cs" id="7_nl2mc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rum2i"]
+albedo_texture = ExtResource("1_li3ow")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sj1ca"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_htnbt"]
+radius = 0.375
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ra8vu"]
+points = PackedVector3Array(-0.3, 0.5, 0.2, 0.3, 0.5, 0.2, -0.3, 0.2, 0.2, 0.3, 0.2, 0.2, -0.3, 0.5, -0.2, 0.3, 0.5, -0.2, -0.3, 0.2, -0.2, 0.3, 0.2, -0.2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_428eh"]
+points = PackedVector3Array(0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuykq"]
+transparency = 1
+albedo_texture = ExtResource("3_yo8uo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_cnits"]
+material = SubResource("StandardMaterial3D_kuykq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02web"]
+transparency = 1
+albedo_texture = ExtResource("4_i4vrn")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8axg8"]
+material = SubResource("StandardMaterial3D_02web")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajdhy"]
+transparency = 1
+albedo_texture = ExtResource("5_41m72")
+
+[sub_resource type="QuadMesh" id="QuadMesh_1m56f"]
+material = SubResource("StandardMaterial3D_ajdhy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4nyf"]
+transparency = 1
+albedo_texture = ExtResource("6_we2p4")
+
+[sub_resource type="QuadMesh" id="QuadMesh_v4hhe"]
+material = SubResource("StandardMaterial3D_w4nyf")
+
+[sub_resource type="QuadMesh" id="QuadMesh_l54sq"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_17gh7"]
+radius = 0.245
+
+[node name="HeadScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.16265)
+
+[node name="Head" type="StaticBody3D" parent="." node_paths=PackedStringArray("hatZone")]
+script = ExtResource("1_m2d4m")
+hatZone = NodePath("Area3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
+material_override = SubResource("StandardMaterial3D_rum2i")
+mesh = SubResource("QuadMesh_sj1ca")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head"]
+shape = SubResource("SphereShape3D_htnbt")
+
+[node name="Area3D" type="Area3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.180836, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000746965, -1.49012e-08, -0.00153136)
+shape = SubResource("ConvexPolygonShape3D_ra8vu")
+
+[node name="Player" type="RigidBody3D" parent="." groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38185, 0)
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("2_wnkha")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("ConvexPolygonShape3D_428eh")
+
+[node name="Graphics" type="Node3D" parent="Player"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Graphics"]
+mesh = SubResource("QuadMesh_cnits")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0755304)
+mesh = SubResource("QuadMesh_8axg8")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Player/Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.079797)
+mesh = SubResource("QuadMesh_1m56f")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Player/Graphics"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0241055)
+mesh = SubResource("QuadMesh_v4hhe")
+
+[node name="Arrow" type="Node3D" parent="Player"]
+script = ExtResource("7_nl2mc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/Arrow"]
+transform = Transform3D(1, 0, 0, 0, 0.155956, 0, 0, 0, 1, 1.03231, 0, 0)
+mesh = SubResource("QuadMesh_l54sq")
+
+[node name="Center" type="Node3D" parent="Player/Arrow/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 6.41208, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="Player" groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.32211, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Area3D"]
+shape = SubResource("SphereShape3D_17gh7")

@@ -1,17 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://clxglphbersgo"]
+[gd_scene load_steps=5 format=3 uid="uid://clxglphbersgo"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerMove.gd" id="1_n3tim"]
-[ext_resource type="Texture2D" uid="uid://4rih84a2junx" path="res://icon.svg" id="1_r5fu8"]
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="1_uvrdg"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8nlix"]
-transparency = 1
-albedo_texture = ExtResource("1_r5fu8")
-
-[sub_resource type="QuadMesh" id="QuadMesh_ung0k"]
-material = SubResource("StandardMaterial3D_8nlix")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_6muo8"]
+[ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="2_eei6e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ud7dn"]
 size = Vector3(10.79, 1, 1)
@@ -22,24 +12,16 @@ points = PackedVector3Array(5.39394, 0.5, 0.5, 5.39394, 0.5, -0.5, -5.395, 0.5, 
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" parent="." instance=ExtResource("1_uvrdg")]
+player = NodePath("../Player")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.869548, 0)
-script = ExtResource("1_n3tim")
+[node name="Ground" type="StaticBody3D" parent="."]
 
-[node name="Player" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("QuadMesh_ung0k")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("BoxShape3D_6muo8")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891794, 0)
 mesh = SubResource("BoxMesh_ud7dn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891794, 0)
 shape = SubResource("ConvexPolygonShape3D_f5slc")
+
+[node name="Player" parent="." instance=ExtResource("2_eei6e")]
