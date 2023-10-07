@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+signal OnPoleCollision(collided:bool)
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
