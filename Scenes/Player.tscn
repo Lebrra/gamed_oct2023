@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerMove.gd" id="1_qxpnv"]
 [ext_resource type="Texture2D" uid="uid://4rih84a2junx" path="res://icon.svg" id="2_ny3se"]
-[ext_resource type="Script" path="res://Scripts/Pole.cs" id="3_8ta20"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yfxo8"]
 
@@ -12,6 +11,9 @@ albedo_texture = ExtResource("2_ny3se")
 
 [sub_resource type="QuadMesh" id="QuadMesh_h6hai"]
 material = SubResource("StandardMaterial3D_j0m06")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j8hta"]
+points = PackedVector3Array(0.75, 0.05, 0, 0.75, -0.05, 0, -0.75, 0.05, 0, -0.75, -0.05, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_2op83"]
 size = Vector2(1.5, 0.1)
@@ -37,16 +39,22 @@ mesh = SubResource("QuadMesh_h6hai")
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.309152, 5.42381)
 
-[node name="Node3D" type="Node3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.135469)
-script = ExtResource("3_8ta20")
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05069, 0)
+collision_layer = 2
+collision_mask = 2
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.769124, 0, 0)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.254, 0, 0.135)
+shape = SubResource("ConvexPolygonShape3D_j8hta")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D/Area3D/CollisionShape3D2"]
 mesh = SubResource("QuadMesh_2op83")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
