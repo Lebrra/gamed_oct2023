@@ -14,4 +14,4 @@ func _physics_process(delta):
 		var direction = position.direction_to(Arrow.global_position)
 		linear_velocity = power * direction
 		power = 0
-		
+	UiGlobal.UpdatePowerUI.emit(power)

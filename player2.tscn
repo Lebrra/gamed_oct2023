@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfbwwdpv6eqcm"]
+
+[ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="1_vp56w"]
+
+[node name="Player" instance=ExtResource("1_vp56w")]
+power = 2.0
+powerBuildUpSpeed = 10

@@ -48,6 +48,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_xhrfn")
 Arrow = NodePath("Arrow/MeshInstance3D/Center")
+maxPower = 50
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_428eh")

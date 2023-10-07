@@ -12,6 +12,7 @@ points = PackedVector3Array(5.39394, 0.5, 0.5, 5.39394, 0.5, -0.5, -5.395, 0.5, 
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" parent="." instance=ExtResource("1_uvrdg")]
+current = true
 player = NodePath("../Player")
 
 [node name="Ground" type="StaticBody3D" parent="."]
