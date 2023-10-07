@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6yjq4hf2ttpk"]
+
+[ext_resource type="Script" path="res://Scenes/CameraFollow.gd" id="1_n54fo"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.93492)
+script = ExtResource("1_n54fo")
+player = NodePath("../CharacterBody3D")
+speedOfCameraX = 2.5
+speedOfCameraY = 1.0
+lookAheadAmountX = 3.0
+lookAheadAmountY = 2.0
