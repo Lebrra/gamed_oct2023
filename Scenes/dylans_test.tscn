@@ -35,9 +35,9 @@ environment = SubResource("Environment_6o0f8")
 current = true
 player = NodePath("../Player")
 speedOfCameraX = 5.0
-speedOfCameraY = 5.0
+speedOfCameraY = 5000.0
 lookAheadAmountX = 1.0
-lookAheadAmountY = 1.0
+lookAheadAmountY = 0.0
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
