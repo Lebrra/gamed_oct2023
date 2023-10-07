@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ssw466w2x1t3"]
+[gd_scene load_steps=2 format=3 uid="uid://ssw466w2x1t3"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UITheme.tres" id="1_cxk3t"]
+
+[node name="Main Menu" type="Node2D"]
+
+[node name="Scene Selection" type="Node2D" parent="."]
+
+[node name="Button" type="Button" parent="Scene Selection"]
+offset_left = 150.0
+offset_top = 73.0
+offset_right = 272.0
+offset_bottom = 98.0
+theme = ExtResource("1_cxk3t")
