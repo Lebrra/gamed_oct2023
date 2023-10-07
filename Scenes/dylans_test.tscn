@@ -1,7 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://clxglphbersgo"]
+[gd_scene load_steps=8 format=3 uid="uid://clxglphbersgo"]
 
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="1_uvrdg"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="2_eei6e"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76ac3"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_sjfop"]
+sky_material = SubResource("ProceduralSkyMaterial_76ac3")
+
+[sub_resource type="Environment" id="Environment_6o0f8"]
+background_mode = 2
+sky = SubResource("Sky_sjfop")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_ud7dn"]
 size = Vector3(10.79, 1, 1)
@@ -10,6 +23,13 @@ size = Vector3(10.79, 1, 1)
 points = PackedVector3Array(5.39394, 0.5, 0.5, 5.39394, 0.5, -0.5, -5.395, 0.5, 0.5, 5.39394, -0.5, 0.5, 5.39394, -0.5, -0.5, -5.395, 0.5, -0.5, -5.395, -0.5, 0.5, -5.395, -0.5, -0.5)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6o0f8")
 
 [node name="Camera3D" parent="." instance=ExtResource("1_uvrdg")]
 current = true
