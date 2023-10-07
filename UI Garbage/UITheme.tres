@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://26mbkpxu32in"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://26mbkpxu32in"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y4q1t"]
 content_margin_left = 5.0
@@ -83,6 +83,9 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gch70"]
+bg_color = Color(0.470588, 0.529412, 0.670588, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_noyqg"]
 bg_color = Color(0.0862745, 0.160784, 0.333333, 1)
 border_width_left = 2
@@ -107,6 +110,8 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81m5o"]
+
 [resource]
 Button/styles/disabled = SubResource("StyleBoxFlat_y4q1t")
 Button/styles/focus = SubResource("StyleBoxFlat_sxrd4")
@@ -115,6 +120,8 @@ Button/styles/normal = SubResource("StyleBoxFlat_3icfh")
 Button/styles/pressed = SubResource("StyleBoxFlat_c8o5p")
 Label/font_sizes/font_size = 32
 Label/styles/normal = SubResource("StyleBoxFlat_rfd1q")
+Panel/styles/panel = SubResource("StyleBoxFlat_gch70")
 ProgressBar/colors/font_color = Color(0.94902, 0.94902, 0.94902, 0)
 ProgressBar/styles/background = SubResource("StyleBoxFlat_noyqg")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_ngt1p")
+TooltipPanel/styles/panel = SubResource("StyleBoxEmpty_81m5o")

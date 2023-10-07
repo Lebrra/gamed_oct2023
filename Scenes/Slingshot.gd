@@ -3,7 +3,7 @@ extends RigidBody3D
 var fired = false
 @export var Arrow: Node3D
 @export var power: float = 5
-@export var powerBuildUpSpeed = 50
+@export var powerBuildUpSpeed = 25
 @export var maxPower = 100
 
 func _physics_process(delta):

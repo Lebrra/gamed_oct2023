@@ -7,33 +7,49 @@ public partial class LoadingScreen : Control
 	private string path;
 	private bool loading;
 	[Export] ProgressBar progressBar;
+	[Export] Label loadingLabel;
+	[Export] Label pressAnyKeyLabel;
 	[Export] bool waitForInputOnLoad;
+	[Export] string[] tips;
+	[Export] Label tipsLabel;
+
 	private bool waitingForInput;
 	private bool inputKeyPressed;
-	public override void _Ready(){
-
-	}
+	private float visualLoadScaler = 0f;
 
 	public override void _Process(double delta){
 
 		if (loading) {
 			var progress = new Godot.Collections.Array();
 			var status = ResourceLoader.LoadThreadedGetStatus(path, progress);
-			if (status == ResourceLoader.ThreadLoadStatus.InProgress){
-				progressBar.Value = (double)progress[0] * 100;
+			visualLoadScaler = Mathf.Min(1f, visualLoadScaler + (float)delta);
+
+			if (status == ResourceLoader.ThreadLoadStatus.InProgress || visualLoadScaler < 1f)
+			{
+				progressBar.Value = (double)progress[0] * 10 * visualLoadScaler + 90 * visualLoadScaler;
+				GD.Print((int)(visualLoadScaler * 100) + "%, " + progress[0]);
 			}
-			else if (status == ResourceLoader.ThreadLoadStatus.Loaded) {
+			else if (status == ResourceLoader.ThreadLoadStatus.InvalidResource)
+			{
+				ResourceLoader.LoadThreadedRequest(path);
+			}
+			else if (status == ResourceLoader.ThreadLoadStatus.Loaded && visualLoadScaler >= .99f)
+			{
 				progressBar.Value = 100;
 				SetProcess(false);
 
-				if (waitForInputOnLoad){
+				if (waitForInputOnLoad)
+				{
 					waitingForInput = true;
-					//pressAnyButtonLabel.UnHide();
+					loadingLabel.Text = "Loaded!";
+					pressAnyKeyLabel.Show();
 				}
-				else {
+				else
+				{
 					ChangeScene(ResourceLoader.LoadThreadedGet(path) as PackedScene);
 				}
 			}
+			
 		}
 	}
 
@@ -57,7 +73,7 @@ public partial class LoadingScreen : Control
 	}
 
 	public void ChangeScene(PackedScene resource) {
-		
+		GetTree().Paused = false;
 		var rootNode = GetTree().Root;
 		foreach (var item in GetTree().Root.GetChildren()) {
 			if (item is Node3D || item is Node2D || item is Control) { //Dont delete any autoload scripts
@@ -74,12 +90,20 @@ public partial class LoadingScreen : Control
 	public void LoadLevel(string path) {
 		this.path = path;
 		Show();
+
+		if (tips.Length != 0) {
+			tipsLabel.Text = tips[GD.Randi() % tips.Length];
+		}
+
 		if (ResourceLoader.HasCached(path)){
 			ResourceLoader.LoadThreadedGet(path);
+			loading = true;
+			visualLoadScaler = 0f;
 		}
 		else {
 			ResourceLoader.LoadThreadedRequest(path);
 			loading = true;
+			visualLoadScaler = 0f;
 
 		}
 	}
