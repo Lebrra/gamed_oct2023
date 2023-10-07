@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg4b02c8rrycv"]
+
+[ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="1_27jsg"]
+[ext_resource type="Script" path="res://Scripts/LoadingScreen.cs" id="1_c8xyw"]
+
+[node name="Loading Screen" type="Control" node_paths=PackedStringArray("progressBar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c8xyw")
+progressBar = NodePath("Panel/Control/ProgressBar")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_27jsg")
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 516.0
+offset_right = 1077.0
+offset_bottom = 549.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Panel/Control"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 449.0
+offset_right = 154.0
+offset_bottom = 519.0
+text = "Loading"
+horizontal_alignment = 1
+vertical_alignment = 1
