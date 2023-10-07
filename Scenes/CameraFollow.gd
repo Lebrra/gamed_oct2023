@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var v = playerNode.velocity
+	var v = playerNode.linear_velocity
 	v.x = clampf(v.x, -1, 1)
 	v.y = clampf(v.y, -1, 1)
 	var direction = Vector3(v.x * lookAheadAmountX, v.y * lookAheadAmountY, v.z)
