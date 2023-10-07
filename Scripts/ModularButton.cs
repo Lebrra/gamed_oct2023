@@ -3,8 +3,8 @@ using System;
 
 public partial class ModularButton : Button
 {
-	[Export] 
-	private IButton action;
+	//[Export] 
+	//private IButton action;
 
 	[Export] 
 	private Button pauseButton;
@@ -13,7 +13,7 @@ public partial class ModularButton : Button
 	{
 		//base._Process(delta);
 
-		ButtonDown += action.DoThing;
+		//ButtonDown += action.DoThing;
 		pauseButton.ButtonDown += Pause;
 	}
 
