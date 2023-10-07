@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv20kd3lsaaa1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm4xk"]
+bg_color = Color(0.172549, 0.172549, 0.172549, 0)
+border_width_top = 8
+border_width_bottom = 8
+border_color = Color(0.196078, 0.196078, 0.196078, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy6u0"]
+bg_color = Color(0, 1, 0, 1)
+border_width_bottom = 8
+border_color = Color(0.196078, 0.196078, 0.196078, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="PowerBarProgress" type="ProgressBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -193.0
+offset_right = 23.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_mm4xk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wy6u0")
+fill_mode = 3
+show_percentage = false
