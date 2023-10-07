@@ -13,6 +13,7 @@ public partial class Pole : Node3D
 	{
 		poleColl.BodyEntered += OnAreaEnter;
 		poleColl.BodyExited += OnAreaExit;
+		PlayerMovement.OnPoleCollision += AddPoleForce;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,10 +25,10 @@ public partial class Pole : Node3D
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
-		LookAtCursor();
+		LookAtCursor(delta);
 	}
 
-	void LookAtCursor()
+	void LookAtCursor(double delta)
 	{
 		var cam = GetViewport().GetCamera3D();
 		var mousePos = GetViewport().GetMousePosition();
@@ -38,25 +39,49 @@ public partial class Pole : Node3D
 		if (cursor != null)
 		{
 			var dist = GlobalPosition.DirectionTo(cursor.Value);
-			var angle = Mathf.Atan2(dist.Y, dist.X);
-			Rotation = new Vector3(0, 0, angle);
+			var finalAngle = Mathf.Atan2(dist.Y, dist.X);
+			Rotation = new Vector3(0F, 0F, Mathf.Lerp(Rotation.Z, finalAngle, (float)delta * 20F));
 			
 		}
 	}
+
+	//float ChooseClosestAngle(float angle)
+	//{
+	//	var oneRad = 2 * Mathf.Pi;
+	//	var diff = Mathf.Abs(angle - Rotation.Z);
+//
+	//	var plus = angle;
+	//	while (Mathf.Abs((plus + oneRad) - Rotation.Z) < diff)
+	//	{
+	//		plus += oneRad;
+	//		GD.Print(plus);
+	//	}
+	//	if (plus > angle) return plus;
+//
+	//	var minus = angle;
+	//	while (Mathf.Abs((plus + oneRad) - Rotation.Z) < diff)
+	//	{
+	//		minus -= oneRad;
+	//		GD.Print(minus);
+	//	}
+	//	if (minus < angle) return minus;
+//
+	//	return angle;
+	//}
 	
 	void OnAreaEnter(Node node)
 	{
-		PlayerMovement.OnPoleCollision(true);
+		playerMov.poleColliding = true;
 	}
 	
 	void OnAreaExit(Node node)
 	{
-		PlayerMovement.OnPoleCollision(false);
-		
-		Vector3 force = Vector3.Up * 5F;
-		var charVel = force.Rotated(Vector3.Right, Rotation.Z);
-		playerMov.SetVelocity(charVel);
-		//GD.Print(Rotation.Z);
-		//GD.Print(charVel);
+		playerMov.poleColliding = false;
+	}
+
+	void AddPoleForce()
+	{
+		var charVel = new Vector3(Mathf.Cos(Rotation.Z), Mathf.Sin(Rotation.Z), 0F);
+		playerMov.SetVelocity(charVel * PlayerMovement.Speed);
 	}
 }

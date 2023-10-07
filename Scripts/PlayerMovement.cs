@@ -3,8 +3,8 @@ using System;
 
 public partial class PlayerMovement : CharacterBody3D
 {
-	public static Action<bool> OnPoleCollision;
-	private bool poleColliding = false;
+	public static Action OnPoleCollision;
+	public bool poleColliding = false;
 	
 	public const float Speed = 5.0f;
 	public const float JumpVelocity = 4.5f;
@@ -12,16 +12,11 @@ public partial class PlayerMovement : CharacterBody3D
 	// Get the gravity from the project settings to be synced with RigidBody nodes.
 	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
-	public override void _Ready()
-	{
-		base._Ready();
-		OnPoleCollision += PoleCollision;
-	}
-
 	public override void _PhysicsProcess(double delta)
 	{
 		if (poleColliding)
 		{
+			OnPoleCollision?.Invoke();
 			MoveAndSlide();
 			return;
 		}
@@ -61,6 +56,6 @@ public partial class PlayerMovement : CharacterBody3D
 
 	public void SetVelocity(Vector3 vel)
 	{
-		Velocity = vel;
+		Velocity += vel;
 	}
 }
