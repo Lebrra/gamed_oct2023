@@ -1,11 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://c7mbxk8e8ah6o"]
+[gd_scene load_steps=19 format=3 uid="uid://c7mbxk8e8ah6o"]
 
 [ext_resource type="Script" path="res://Scenes/Slingshot.gd" id="1_xhrfn"]
 [ext_resource type="Texture2D" uid="uid://tm5crdh32c2l" path="res://Art/Character/textures/OuvertToMap_DefaultMaterial_BaseColor.png" id="3_fk1gt"]
 [ext_resource type="Texture2D" uid="uid://dt4winw7b64im" path="res://Art/Character/textures/OuvertToMap_DefaultMaterial_Normal.png" id="4_2y3p6"]
 [ext_resource type="Texture2D" uid="uid://drav3lcoeehfm" path="res://Art/Character/textures/OuvertToMap_DefaultMaterial_OcclusionRoughnessMetallic.png" id="5_p1xe8"]
+[ext_resource type="Script" path="res://Scripts/PowerBar.cs" id="6_5675u"]
 [ext_resource type="Script" path="res://Scripts/Pole.cs" id="6_e6yar"]
-[ext_resource type="PackedScene" uid="uid://1hbmr5jdgv18" path="res://UI Garbage/PowerBar.tscn" id="6_l7tww"]
+[ext_resource type="PackedScene" path="res://UI Garbage/PowerBarProgress.tscn" id="7_dfv86"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sm5o"]
 size = Vector3(1, 1.53227, 1)
@@ -594,7 +595,7 @@ _data = {
 "Run_Right": SubResource("Animation_wqhls")
 }
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_urkq7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_k6i74"]
 viewport_path = NodePath("PowerBar/SubViewport")
 
 [node name="Player" type="RigidBody3D" node_paths=PackedStringArray("Arrow", "anim", "powerBar") groups=["Player"]]
@@ -695,9 +696,19 @@ libraries = {
 "": SubResource("AnimationLibrary_n0mrt")
 }
 
-[node name="PowerBar" parent="." instance=ExtResource("6_l7tww")]
+[node name="PowerBar" type="Node3D" parent="." node_paths=PackedStringArray("bar", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38185, 0)
+script = ExtResource("6_5675u")
+bar = NodePath("SubViewport/PowerBarProgress")
+sprite = NodePath("Sprite3D")
 
-[node name="Sprite3D" parent="PowerBar" index="0"]
-texture = SubResource("ViewportTexture_urkq7")
+[node name="Sprite3D" type="Sprite3D" parent="PowerBar"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.9041, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_k6i74")
 
-[editable path="PowerBar"]
+[node name="SubViewport" type="SubViewport" parent="PowerBar"]
+disable_3d = true
+transparent_bg = true
+
+[node name="PowerBarProgress" parent="PowerBar/SubViewport" instance=ExtResource("7_dfv86")]

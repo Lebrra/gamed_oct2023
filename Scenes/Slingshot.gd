@@ -11,7 +11,6 @@ var fired = false
 func _physics_process(delta):
 	if linear_velocity.y < 0.0001 && linear_velocity.y > -0.0001:
 		anim.play("Idle_001")
-		print("Idle")
 	else:
 		anim.play("Flying")
 	if Input.is_action_pressed("Fire"):
