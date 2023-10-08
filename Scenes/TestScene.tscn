@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8mfjdeh8pyw0"]
+[gd_scene load_steps=9 format=3 uid="uid://b8mfjdeh8pyw0"]
 
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="1_id3xg"]
 [ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="2_5ledm"]
+[ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="3_har6l"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="4_tcfd0"]
+[ext_resource type="Script" path="res://Scripts/SceneLoadButton.cs" id="5_3njnn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jdtid"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uyq25"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_tayo4"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,7 +18,7 @@
 mesh = SubResource("BoxMesh_jdtid")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.972113, 0.234514, 0, -0.234514, 0.972113, 0, 0.816393, 2.35496)
+transform = Transform3D(1, 0, 0, 0, 0.972113, 0.234514, 0, -0.234514, 0.972113, 0, 3.21163, 7.32879)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -27,5 +34,77 @@ levelPath = "res://Scenes/TestScene.tscn"
 
 [node name="MainMenu" parent="Pause Menu/VBoxContainer" index="2"]
 levelPath = "res://Scenes/MainMenu.tscn"
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7591, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_uyq25")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_tayo4")
+
+[node name="Victory Screen" type="Control" parent="." node_paths=PackedStringArray("resumeButton")]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_har6l")
+script = ExtResource("4_tcfd0")
+pauseKey = 4194305
+resumeButton = NodePath("../Pause Menu/VBoxContainer/Resume")
+
+[node name="Label" type="Label" parent="Victory Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -106.5
+offset_right = 170.0
+offset_bottom = -36.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hot diggity dog!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Victory Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NextLevel" type="Button" parent="Victory Screen/VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
+layout_mode = 2
+text = "Next Level"
+script = ExtResource("5_3njnn")
+controlsToHide = [NodePath("../..")]
+
+[node name="MainMenu" type="Button" parent="Victory Screen/VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
+layout_mode = 2
+text = "Return to Menu"
+script = ExtResource("5_3njnn")
+levelPath = "res://Scenes/MainMenu.tscn"
+controlsToHide = [NodePath("../..")]
 
 [editable path="Pause Menu"]
