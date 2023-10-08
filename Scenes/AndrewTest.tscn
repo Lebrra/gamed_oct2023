@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://8y6od22bwwsg"]
+[gd_scene load_steps=5 format=3 uid="uid://8y6od22bwwsg"]
 
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="1_s8h5a"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="2_3pyye"]
-[ext_resource type="PackedScene" uid="uid://1hbmr5jdgv18" path="res://UI Garbage/PowerBar.tscn" id="2_td2cc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ud7dn"]
 size = Vector3(10.79, 1, 1)
@@ -26,6 +25,5 @@ mesh = SubResource("BoxMesh_ud7dn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891794, 0)
 shape = SubResource("ConvexPolygonShape3D_f5slc")
 
-[node name="PowerBar" parent="." instance=ExtResource("2_td2cc")]
-
 [node name="Player" parent="." instance=ExtResource("2_3pyye")]
+power = 0.0
