@@ -4,9 +4,9 @@
 [ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="1_7dma2"]
 [ext_resource type="Texture2D" uid="uid://4rih84a2junx" path="res://icon.svg" id="2_ugraa"]
 [ext_resource type="Script" path="res://Scripts/SceneLoadButton.cs" id="4_x8sk3"]
-[ext_resource type="PackedScene" uid="uid://dhf4mp4pk1k60" path="res://Scenes/level_1.tscn" id="5_akjgp"]
-[ext_resource type="PackedScene" uid="uid://lve1va6kh3br" path="res://Scenes/Level_2.tscn" id="6_0mjcb"]
-[ext_resource type="PackedScene" uid="uid://bnunx7baaap32" path="res://Scenes/Level_3.tscn" id="7_halui"]
+[ext_resource type="PackedScene" uid="uid://dhf4mp4pk1k60" path="res://Scenes/level_1.tscn" id="5_ojphe"]
+[ext_resource type="PackedScene" uid="uid://lve1va6kh3br" path="res://Scenes/Level_2.tscn" id="6_n5upj"]
+[ext_resource type="PackedScene" uid="uid://b6adp0gm3ypbj" path="res://Scenes/Level_3.tscn" id="7_o3p4k"]
 [ext_resource type="Script" path="res://Scenes/UINavigation.gd" id="8_3d5bd"]
 
 [node name="Main Menu" type="Control"]
@@ -77,7 +77,7 @@ text = "Level 1"
 icon = ExtResource("2_ugraa")
 expand_icon = true
 script = ExtResource("4_x8sk3")
-levelPath = ExtResource("5_akjgp")
+levelPath = ExtResource("5_ojphe")
 controlsToHide = [NodePath("../..")]
 
 [node name="Scene 2" type="Button" parent="Scene Selection/VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
@@ -86,7 +86,7 @@ text = "Level 2"
 icon = ExtResource("2_ugraa")
 expand_icon = true
 script = ExtResource("4_x8sk3")
-levelPath = ExtResource("6_0mjcb")
+levelPath = ExtResource("6_n5upj")
 controlsToHide = [NodePath("../..")]
 
 [node name="Scene 3" type="Button" parent="Scene Selection/VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
@@ -95,7 +95,7 @@ text = "Level 3"
 icon = ExtResource("2_ugraa")
 expand_icon = true
 script = ExtResource("4_x8sk3")
-levelPath = ExtResource("7_halui")
+levelPath = ExtResource("7_o3p4k")
 controlsToHide = [NodePath("../..")]
 
 [node name="Main" type="Control" parent="."]

@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="1_7gtu4"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="2_i4i4f"]
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="3_e810k"]
-[ext_resource type="PackedScene" uid="uid://b2a7at5lkkjtn" path="res://Objects/head.tscn" id="4_7dabf"]
+[ext_resource type="PackedScene" path="res://Objects/head.tscn" id="4_7dabf"]
 [ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="5_ndk4t"]
 [ext_resource type="Texture2D" uid="uid://ch1l30pvudoqh" path="res://Art/scarecrow.png" id="6_ym1oo"]
-[ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="7_e2ug8"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="7_e2ug8"]
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="8_dtcqq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2dbfk"]
@@ -171,11 +171,7 @@ multimesh = SubResource("MultiMesh_u5b6y")
 [node name="Pause Menu" parent="." instance=ExtResource("7_e2ug8")]
 
 [node name="Restart" parent="Pause Menu/VBoxContainer" index="1" node_paths=PackedStringArray("controlsToHide")]
-levelPath = "res://Scenes/level_1.tscn"
 controlsToHide = [NodePath("../..")]
-
-[node name="MainMenu" parent="Pause Menu/VBoxContainer" index="2"]
-levelPath = "res://Scenes/MainMenu.tscn"
 
 [node name="Loading Screen" parent="." instance=ExtResource("8_dtcqq")]
 visible = false

@@ -1,16 +1,29 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=30 format=3 uid="uid://b6adp0gm3ypbj"]
 
 [ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ldejs"]
 [ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_deyh6"]
 [ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="4_voayp"]
+=======
+[gd_scene load_steps=24 format=3 uid="uid://b6adp0gm3ypbj"]
+
+[ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ldejs"]
+[ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_deyh6"]
+[ext_resource type="PackedScene" path="res://Scenes/level_arrows.tscn" id="3_hh861"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="4_voayp"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="5_a65qy"]
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="6_kbuuc"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="7_5dn06"]
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="8_cyvio"]
 [ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="9_qvw54"]
 [ext_resource type="PackedScene" uid="uid://cfx0gmeqs4hge" path="res://Objects/scarecrow.tscn" id="10_vom1v"]
+<<<<<<< Updated upstream
 [ext_resource type="ArrayMesh" uid="uid://h22rn3i08c0r" path="res://Objects/grassClumpThing.tres" id="11_c55xb"]
 [ext_resource type="PackedScene" uid="uid://dy3lpjuadnsww" path="res://Art/dirt_ball.tscn" id="11_y6gtp"]
+=======
+[ext_resource type="ArrayMesh" uid="uid://dkfj3btpxj6aq" path="res://Objects/grassClumpThing.tres" id="11_c55xb"]
+>>>>>>> Stashed changes
 [ext_resource type="PackedScene" uid="uid://bxt64a1ckwssh" path="res://Objects/corn.tscn" id="12_buxur"]
 [ext_resource type="Script" path="res://Scenes/OnEnterUpdateTutorialText.gd" id="13_1rj2o"]
 [ext_resource type="PackedScene" uid="uid://by2k8o08eydyq" path="res://Objects/arrow_powerup.tscn" id="14_kllgo"]
@@ -108,6 +121,9 @@ follow_viewport_enabled = true
 
 [node name="Victory Screen" parent="CanvasLayer" instance=ExtResource("3_deyh6")]
 visible = false
+
+[node name="NextLevel" parent="CanvasLayer/Victory Screen/VBoxContainer" index="0"]
+levelPath = ExtResource("3_hh861")
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("4_voayp")]
 
@@ -254,6 +270,7 @@ timer = NodePath("../ArrowPowerup/Timer")
 
 [connection signal="body_entered" from="Text Update" to="Text Update/CollisionShape3D" method="_on_area_3d_body_entered"]
 
+[editable path="CanvasLayer/Victory Screen"]
 [editable path="CanvasLayer/Pause Menu"]
 [editable path="Player"]
 [editable path="Scarecrow"]

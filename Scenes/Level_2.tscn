@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c52258ujjoaw0" path="res://UI Garbage/tutorial_text.tscn" id="1_r7j38"]
 [ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="2_0lrjg"]
-[ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="3_61o5j"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="3_61o5j"]
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="4_k8cfc"]
-[ext_resource type="PackedScene" uid="uid://bnunx7baaap32" path="res://Scenes/Level_3.tscn" id="4_m7qia"]
+[ext_resource type="PackedScene" uid="uid://b6adp0gm3ypbj" path="res://Scenes/Level_3.tscn" id="4_m7qia"]
 [ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="5_e8edt"]
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="6_ydl2v"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="7_8bf8v"]
@@ -12,8 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="9_6haf2"]
 [ext_resource type="PackedScene" uid="uid://cfx0gmeqs4hge" path="res://Objects/scarecrow.tscn" id="10_cj5hr"]
 [ext_resource type="PackedScene" uid="uid://bxt64a1ckwssh" path="res://Objects/corn.tscn" id="12_1swcx"]
+<<<<<<< Updated upstream
 [ext_resource type="ArrayMesh" uid="uid://h22rn3i08c0r" path="res://Objects/grassClumpThing.tres" id="12_4hw6o"]
 [ext_resource type="PackedScene" uid="uid://dy3lpjuadnsww" path="res://Art/dirt_ball.tscn" id="13_8hoja"]
+=======
+[ext_resource type="ArrayMesh" uid="uid://dkfj3btpxj6aq" path="res://Objects/grassClumpThing.tres" id="12_4hw6o"]
+>>>>>>> Stashed changes
 [ext_resource type="Script" path="res://Scenes/OnEnterUpdateTutorialText.gd" id="13_d7rce"]
 [ext_resource type="PackedScene" uid="uid://cof32tfbl2pmq" path="res://Objects/wall.tscn" id="14_08142"]
 [ext_resource type="PackedScene" uid="uid://byc4klo02biic" path="res://Objects/barn.tscn" id="16_p0gkd"]

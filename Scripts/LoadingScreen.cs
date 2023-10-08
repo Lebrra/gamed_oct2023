@@ -88,11 +88,14 @@ public partial class LoadingScreen : Control
 			if (item is Node3D || item is Node2D || item is Control) { //Dont delete any autoload scripts
 				GetTree().Root.RemoveChild(item);
 				item.QueueFree();
+
 			}
 			
 		}
 		Node currentNode = resource.Instantiate();
 		rootNode.AddChild(currentNode);
+
+		
 		QueueFree();
 	}
 

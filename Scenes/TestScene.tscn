@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b8mfjdeh8pyw0"]
 
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="1_id3xg"]
-[ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="2_5ledm"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="2_5ledm"]
 [ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_otdt3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jdtid"]
@@ -28,11 +28,7 @@ visible = false
 [node name="Pause Menu" parent="." instance=ExtResource("2_5ledm")]
 
 [node name="Restart" parent="Pause Menu/VBoxContainer" index="1" node_paths=PackedStringArray("controlsToHide")]
-levelPath = "res://Scenes/TestScene.tscn"
 controlsToHide = [null]
-
-[node name="MainMenu" parent="Pause Menu/VBoxContainer" index="2"]
-levelPath = "res://Scenes/MainMenu.tscn"
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.7591, 0)
