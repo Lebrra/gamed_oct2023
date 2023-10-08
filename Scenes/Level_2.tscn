@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=3 uid="uid://lve1va6kh3br"]
+[gd_scene load_steps=31 format=3 uid="uid://lve1va6kh3br"]
 
 [ext_resource type="PackedScene" uid="uid://c52258ujjoaw0" path="res://UI Garbage/tutorial_text.tscn" id="1_r7j38"]
-[ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="2_0lrjg"]
+[ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="3_0ttqr"]
 [ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="3_61o5j"]
+[ext_resource type="Script" path="res://UI Garbage/VictoryScreen.gd" id="4_2msp8"]
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="4_k8cfc"]
 [ext_resource type="PackedScene" uid="uid://b0fcdwi3butdb" path="res://Scenes/Level_3.tscn" id="4_m7qia"]
+[ext_resource type="Script" path="res://Scripts/SceneLoadButton.cs" id="5_0esqo"]
 [ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="5_e8edt"]
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="6_ydl2v"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="7_8bf8v"]
@@ -74,12 +76,71 @@ follow_viewport_enabled = true
 [node name="Tutorial Text" parent="CanvasLayer" instance=ExtResource("1_r7j38")]
 
 [node name="Score" parent="CanvasLayer" instance=ExtResource("5_e8edt")]
+offset_left = 85.0
+offset_top = 92.0
+offset_right = 85.0
+offset_bottom = 92.0
 
-[node name="Victory Screen" parent="CanvasLayer" instance=ExtResource("2_0lrjg")]
+[node name="Victory Screen" type="Control" parent="CanvasLayer"]
+process_mode = 3
 visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_0ttqr")
+script = ExtResource("4_2msp8")
 
-[node name="NextLevel" parent="CanvasLayer/Victory Screen/VBoxContainer" index="0"]
+[node name="Label" type="Label" parent="CanvasLayer/Victory Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -231.0
+offset_right = 170.0
+offset_bottom = -161.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hot diggity dog!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Victory Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = 154.0
+offset_right = 126.0
+offset_bottom = 305.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NextLevel" type="Button" parent="CanvasLayer/Victory Screen/VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
+layout_mode = 2
+text = "Next Level"
+script = ExtResource("5_0esqo")
 levelPath = ExtResource("4_m7qia")
+controlsToHide = [NodePath("../..")]
+
+[node name="MainMenu" type="Button" parent="CanvasLayer/Victory Screen/VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
+layout_mode = 2
+text = "Return to Menu"
+script = ExtResource("5_0esqo")
+controlsToHide = [NodePath("../..")]
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("3_61o5j")]
 
@@ -112,6 +173,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1.38185, 0)
 
 [node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode", "zoomToNode") instance=ExtResource("8_mxajn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.542, 12.009)
+current = true
 player = NodePath("../Player")
 playerNode = NodePath("../Player")
 zoomToNode = NodePath("../Scarecrow/LookAheadPoint")
@@ -182,7 +244,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3462, 25, 0)
 
 [connection signal="body_entered" from="Text Update" to="Text Update/CollisionShape3D" method="_on_area_3d_body_entered"]
 
-[editable path="CanvasLayer/Victory Screen"]
 [editable path="CanvasLayer/Pause Menu"]
 [editable path="Player"]
 [editable path="Scarecrow"]
