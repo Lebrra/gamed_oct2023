@@ -1,9 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://d3hceet1q8uvm"]
+[gd_scene load_steps=25 format=3 uid="uid://bqtbny8i2kr4h"]
 
 [ext_resource type="PackedScene" uid="uid://c52258ujjoaw0" path="res://UI Garbage/tutorial_text.tscn" id="1_wb4go"]
-[ext_resource type="PackedScene" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ssqex"]
+[ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ssqex"]
 [ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_37bo1"]
-[ext_resource type="PackedScene" path="res://Scenes/Level_2.tscn" id="4_1edtd"]
+[ext_resource type="PackedScene" uid="uid://ssw466w2x1t3" path="res://Scenes/MainMenu.tscn" id="4_q2dxa"]
 [ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="5_im3ll"]
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="6_ixi3v"]
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="7_7cywu"]
@@ -11,11 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="9_i7c4l"]
 [ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="10_r7riu"]
 [ext_resource type="Texture2D" uid="uid://ch1l30pvudoqh" path="res://Art/scarecrow.png" id="11_6h8ui"]
-[ext_resource type="PackedScene" uid="uid://b2a7at5lkkjtn" path="res://Objects/head.tscn" id="12_tq0sj"]
-[ext_resource type="ArrayMesh" uid="uid://h22rn3i08c0r" path="res://Objects/grassClumpThing.tres" id="13_d17y6"]
+[ext_resource type="PackedScene" path="res://Objects/head.tscn" id="12_tq0sj"]
+[ext_resource type="ArrayMesh" uid="uid://dkfj3btpxj6aq" path="res://Objects/grassClumpThing.tres" id="13_d17y6"]
 [ext_resource type="Script" path="res://Scenes/OnEnterUpdateTutorialText.gd" id="14_7plje"]
 [ext_resource type="PackedScene" uid="uid://by2k8o08eydyq" path="res://Objects/arrow_powerup.tscn" id="15_b60ie"]
-[ext_resource type="PackedScene" path="res://Objects/wall.tscn" id="16_m6spi"]
+[ext_resource type="PackedScene" uid="uid://cof32tfbl2pmq" path="res://Objects/wall.tscn" id="16_m6spi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2dbfk"]
 sky_top_color = Color(0.141176, 0.466667, 0.721569, 1)
@@ -64,7 +64,7 @@ follow_viewport_enabled = true
 visible = false
 
 [node name="NextLevel" parent="CanvasLayer/Victory Screen/VBoxContainer" index="0"]
-levelPath = ExtResource("4_1edtd")
+levelPath = ExtResource("4_q2dxa")
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("5_im3ll")]
 
