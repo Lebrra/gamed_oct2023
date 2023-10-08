@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://by2k8o08eydyq"]
+
+[ext_resource type="Script" path="res://Scripts/ArrowPowerup.cs" id="1_7x5s0"]
+[ext_resource type="Texture2D" uid="uid://c1nw745xjmqw6" path="res://Art/ArrowGo.png" id="2_7odyf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7f6dg"]
+
+[node name="ArrowPowerup" type="Area3D"]
+script = ExtResource("1_7x5s0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_7f6dg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+texture = ExtResource("2_7odyf")

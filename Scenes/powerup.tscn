@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://byif60pksf7di"]
+
+[ext_resource type="PackedScene" uid="uid://by2k8o08eydyq" path="res://Objects/arrow_powerup.tscn" id="1_gikxk"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="ArrowPowerup" parent="." instance=ExtResource("1_gikxk")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.20211)
