@@ -53,7 +53,7 @@ text = "Scene 1"
 icon = ExtResource("2_ugraa")
 expand_icon = true
 script = ExtResource("4_x8sk3")
-levelPath = "res://Scenes/TestScene.tscn"
+levelPath = "res://Scenes/level_1.tscn"
 controlsToHide = [NodePath("..")]
 
 [node name="Label" type="Label" parent="Scene Selection"]
