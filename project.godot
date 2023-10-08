@@ -23,6 +23,7 @@ window/stretch/aspect="keep_height"
 
 UiGlobal="*res://UiGlobal.gd"
 GameManager="*res://GameManager.gd"
+MusicPlayer="*res://Music/MusicPlayer.tscn"
 
 [debug]
 
