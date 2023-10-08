@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://8y6od22bwwsg"]
 
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="1_s8h5a"]
-[ext_resource type="PackedScene" uid="uid://c41ume11of8tt" path="res://Objects/player.tscn" id="2_3pyye"]
+[ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="2_3pyye"]
 [ext_resource type="Script" path="res://Scripts/PowerBar.cs" id="2_fiw2s"]
 [ext_resource type="PackedScene" uid="uid://cv20kd3lsaaa1" path="res://UI Garbage/PowerBarProgress.tscn" id="3_8u6xy"]
 
@@ -30,18 +30,21 @@ mesh = SubResource("BoxMesh_ud7dn")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891794, 0)
 shape = SubResource("ConvexPolygonShape3D_f5slc")
 
-[node name="Player" parent="." instance=ExtResource("2_3pyye")]
-
-[node name="PowerBar" type="Node3D" parent="Player"]
+[node name="PowerBar" type="Node3D" parent="." node_paths=PackedStringArray("bar", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38185, 0)
 script = ExtResource("2_fiw2s")
+bar = NodePath("SubViewport/PowerBarProgress")
+sprite = NodePath("Sprite3D")
 
-[node name="Sprite3D" type="Sprite3D" parent="Player/PowerBar"]
+[node name="Sprite3D" type="Sprite3D" parent="PowerBar"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.9041, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_lgomb")
 
-[node name="SubViewport" type="SubViewport" parent="Player/PowerBar"]
+[node name="SubViewport" type="SubViewport" parent="PowerBar"]
 disable_3d = true
 transparent_bg = true
 
-[node name="PowerBarProgress" parent="Player/PowerBar/SubViewport" instance=ExtResource("3_8u6xy")]
+[node name="PowerBarProgress" parent="PowerBar/SubViewport" instance=ExtResource("3_8u6xy")]
+
+[node name="Player" parent="." instance=ExtResource("2_3pyye")]
