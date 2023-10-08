@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://lve1va6kh3br"]
+[gd_scene load_steps=32 format=3 uid="uid://lve1va6kh3br"]
 
 [ext_resource type="PackedScene" uid="uid://c52258ujjoaw0" path="res://UI Garbage/tutorial_text.tscn" id="1_r7j38"]
 [ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="3_0ttqr"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="5_e8edt"]
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="6_ydl2v"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="7_8bf8v"]
+[ext_resource type="PackedScene" uid="uid://ssw466w2x1t3" path="res://Scenes/MainMenu.tscn" id="7_heu6w"]
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="8_mxajn"]
 [ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="9_6haf2"]
 [ext_resource type="PackedScene" uid="uid://cfx0gmeqs4hge" path="res://Objects/scarecrow.tscn" id="10_cj5hr"]
@@ -76,10 +77,6 @@ follow_viewport_enabled = true
 [node name="Tutorial Text" parent="CanvasLayer" instance=ExtResource("1_r7j38")]
 
 [node name="Score" parent="CanvasLayer" instance=ExtResource("5_e8edt")]
-offset_left = 85.0
-offset_top = 92.0
-offset_right = 85.0
-offset_bottom = 92.0
 
 [node name="Victory Screen" type="Control" parent="CanvasLayer"]
 process_mode = 3
@@ -140,6 +137,7 @@ controlsToHide = [NodePath("../..")]
 layout_mode = 2
 text = "Return to Menu"
 script = ExtResource("5_0esqo")
+levelPath = ExtResource("7_heu6w")
 controlsToHide = [NodePath("../..")]
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("3_61o5j")]

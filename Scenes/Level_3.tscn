@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b0fcdwi3butdb"]
+[gd_scene load_steps=34 format=3 uid="uid://b0fcdwi3butdb"]
 
 [ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ldejs"]
 [ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="2_tkw51"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/SceneLoadButton.cs" id="4_w6nkf"]
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="5_a65qy"]
 [ext_resource type="PackedScene" uid="uid://bqtbny8i2kr4h" path="res://Scenes/level_arrows.tscn" id="5_b7cyv"]
+[ext_resource type="PackedScene" uid="uid://ssw466w2x1t3" path="res://Scenes/MainMenu.tscn" id="6_ikkk5"]
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="6_kbuuc"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="7_5dn06"]
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="8_cyvio"]
@@ -168,6 +169,7 @@ controlsToHide = [NodePath("../..")]
 layout_mode = 2
 text = "Return to Menu"
 script = ExtResource("4_w6nkf")
+levelPath = ExtResource("6_ikkk5")
 controlsToHide = [NodePath("../..")]
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("4_voayp")]
