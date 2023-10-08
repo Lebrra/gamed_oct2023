@@ -2,9 +2,9 @@ extends RigidBody3D
 
 var fired = false
 @export var Arrow: Node3D
-@export var power: float = 5
-@export var powerBuildUpSpeed = 25
-@export var maxPower = 100
+var power: float = 0
+@export var powerBuildUpSpeed = 100
+@export var jumpMultiplier = .25
 @export var anim: AnimationPlayer
 @export var powerBar: Node3D
 
@@ -13,13 +13,16 @@ func _physics_process(delta):
 		anim.play("Idle_001")
 	else:
 		anim.play("Flying")
+		
 	if Input.is_action_pressed("Fire"):
-		power += delta * powerBuildUpSpeed
+		power = clampf(power + delta * powerBuildUpSpeed, 0, 100)
+		
 	if Input.is_action_just_released("Fire"):
 		fired = true
 		var direction = position.direction_to(Arrow.global_position)
-		linear_velocity = power * direction
+		linear_velocity = power * jumpMultiplier * direction
 		power = 0
 		anim.play("Flying")
-	#UiGlobal.UpdatePowerUI.emit(power)
+	
 	powerBar.UpdatePower(power)
+	

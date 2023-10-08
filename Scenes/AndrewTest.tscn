@@ -26,4 +26,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891794, 0)
 shape = SubResource("ConvexPolygonShape3D_f5slc")
 
 [node name="Player" parent="." instance=ExtResource("2_3pyye")]
-power = 0.0

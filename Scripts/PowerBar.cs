@@ -22,6 +22,7 @@ public partial class PowerBar : Node
 		}
 		else {
 			sprite.Hide();
+			bar.Value = 0;
 		}
 	}
 

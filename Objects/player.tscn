@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://drav3lcoeehfm" path="res://Art/Character/textures/OuvertToMap_DefaultMaterial_OcclusionRoughnessMetallic.png" id="5_p1xe8"]
 [ext_resource type="Script" path="res://Scripts/PowerBar.cs" id="6_5675u"]
 [ext_resource type="Script" path="res://Scripts/Pole.cs" id="6_e6yar"]
-[ext_resource type="PackedScene" path="res://UI Garbage/PowerBarProgress.tscn" id="7_dfv86"]
+[ext_resource type="PackedScene" uid="uid://cv20kd3lsaaa1" path="res://UI Garbage/PowerBarProgress.tscn" id="7_dfv86"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4sm5o"]
 size = Vector3(1, 1.53227, 1)
@@ -606,8 +606,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_xhrfn")
 Arrow = NodePath("Arrow/MeshInstance3D/Center")
-power = 0.0
-maxPower = 50
 anim = NodePath("Graphics/AnimationPlayer")
 powerBar = NodePath("PowerBar")
 
