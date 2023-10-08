@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="overTheTop_Jam"
-run/main_scene="res://Scenes/Player.tscn"
+run/main_scene="res://Scenes/level_1.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 "<<<<<<<Updatedupstream[display]window/size/viewport_width"=1280
@@ -22,6 +22,10 @@ window/stretch/aspect="keep_height"
 [autoload]
 
 UiGlobal="*res://UiGlobal.gd"
+
+[debug]
+
+settings/profiler/max_functions=65535
 
 [display]
 

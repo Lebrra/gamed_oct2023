@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://yjhgwphs3tfn"]
+[gd_scene load_steps=7 format=3 uid="uid://b2a7at5lkkjtn"]
 
-[ext_resource type="Script" path="res://Scripts/Head.cs" id="1_3rgwo"]
+[ext_resource type="Script" path="res://Objects/Goal.gd" id="1_qhtqc"]
 [ext_resource type="Texture2D" uid="uid://4rih84a2junx" path="res://icon.svg" id="2_8ss02"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rum2i"]
@@ -14,9 +14,8 @@ radius = 0.375
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ra8vu"]
 points = PackedVector3Array(-0.3, 0.5, 0.2, 0.3, 0.5, 0.2, -0.3, 0.2, 0.2, 0.3, 0.2, 0.2, -0.3, 0.5, -0.2, 0.3, 0.5, -0.2, -0.3, 0.2, -0.2, 0.3, 0.2, -0.2)
 
-[node name="Head" type="StaticBody3D" node_paths=PackedStringArray("hatZone")]
-script = ExtResource("1_3rgwo")
-hatZone = NodePath("Area3D")
+[node name="Head" type="StaticBody3D"]
+script = ExtResource("1_qhtqc")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_rum2i")
@@ -32,3 +31,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.180836, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000746965, -1.49012e-08, -0.00153136)
 shape = SubResource("ConvexPolygonShape3D_ra8vu")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
