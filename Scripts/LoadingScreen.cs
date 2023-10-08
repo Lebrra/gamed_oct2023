@@ -55,7 +55,7 @@ public partial class LoadingScreen : Control
 				}
 				else
 				{
-					ChangeScene(ResourceLoader.LoadThreadedGet(path) as PackedScene);
+					ChangeScene(path);
 				}
 			}
 			
@@ -68,7 +68,7 @@ public partial class LoadingScreen : Control
 			if (@event is InputEventKey) {
 				InputEventKey key = (InputEventKey)@event;
 				if (inputKeyPressed) {
-					ChangeScene(ResourceLoader.LoadThreadedGet(path) as PackedScene);
+					ChangeScene(path);
 				}
 				if (key.Pressed)
 				{
@@ -81,7 +81,7 @@ public partial class LoadingScreen : Control
 		}
 	}
 
-	public void ChangeScene(PackedScene resource) {
+	public void ChangeScene(string path) {
 		GetTree().Paused = false;
 		var rootNode = GetTree().Root;
 		foreach (var item in GetTree().Root.GetChildren()) {
@@ -91,8 +91,8 @@ public partial class LoadingScreen : Control
 			}
 			
 		}
-		Node currentNode = resource.Instantiate();
-		rootNode.AddChild(currentNode);
+		//Node currentNode = resource.Instantiate();
+		rootNode.GetTree().ChangeSceneToFile(path);
 		QueueFree();
 	}
 
