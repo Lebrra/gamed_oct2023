@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8mfjdeh8pyw0"]
+[gd_scene load_steps=4 format=3 uid="uid://b8mfjdeh8pyw0"]
+
+[ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="1_id3xg"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="2_5ledm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jdtid"]
 
@@ -12,3 +15,16 @@ transform = Transform3D(1, 0, 0, 0, 0.972113, 0.234514, 0, -0.234514, 0.972113, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.518385, -0.592563, 0.61656, 0, 0.720999, 0.692936, -0.855147, -0.359208, 0.373755, 0, 0, 0)
+
+[node name="Loading Screen" parent="." instance=ExtResource("1_id3xg")]
+visible = false
+
+[node name="Pause Menu" parent="." instance=ExtResource("2_5ledm")]
+
+[node name="Restart" parent="Pause Menu/VBoxContainer" index="1"]
+levelPath = "res://Scenes/TestScene.tscn"
+
+[node name="MainMenu" parent="Pause Menu/VBoxContainer" index="2"]
+levelPath = "res://Scenes/MainMenu.tscn"
+
+[editable path="Pause Menu"]

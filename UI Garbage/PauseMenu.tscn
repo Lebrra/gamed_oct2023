@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkgsave42kya2"]
+
+[ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="1_jee65"]
+[ext_resource type="Script" path="res://Scripts/PauseMenu.cs" id="2_aqra3"]
+[ext_resource type="Script" path="res://Scripts/SceneLoadButton.cs" id="3_wgfbv"]
+
+[node name="Pause Menu" type="Control" node_paths=PackedStringArray("resumeButton")]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme = ExtResource("1_jee65")
+script = ExtResource("2_aqra3")
+pauseKey = 4194305
+resumeButton = NodePath("VBoxContainer/Resume")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -106.5
+offset_right = 170.0
+offset_bottom = -36.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.0
+offset_top = -30.0
+offset_right = 126.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Restart" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
+layout_mode = 2
+text = "Restart Level"
+script = ExtResource("3_wgfbv")
+controlsToHide = [null]
+
+[node name="MainMenu" type="Button" parent="VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
+layout_mode = 2
+text = "Return to Menu"
+script = ExtResource("3_wgfbv")
+controlsToHide = [NodePath("../..")]

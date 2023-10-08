@@ -5,20 +5,14 @@ public partial class PauseMenu : Control
 {
 
 	[Export] Key pauseKey;
+	[Export] Button resumeButton;
 	public bool paused { private set; get; }
 
-	/*
-	public static PauseMenu instance;
+
 	public override void _Ready(){
-		if (instance != null){
-			instance.QueueFree();
-			instance = this;
-		}
-		else {
-			instance = this;
-		}
+		resumeButton.Pressed += UnPause;
 	}
-	*/
+	
 
 	public override void _Input(InputEvent @event) {
 		base._Input(@event);
@@ -27,10 +21,6 @@ public partial class PauseMenu : Control
 				TogglePause();
 			}
 		}
-	}
-
-	void _on_resume_button_down() {
-		UnPause();
 	}
 
 	public void TogglePause() {

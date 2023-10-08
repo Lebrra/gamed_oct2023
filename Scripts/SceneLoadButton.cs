@@ -1,14 +1,14 @@
 using Godot;
 using System;
 
-public partial class SceneLoadButton : Control
+public partial class SceneLoadButton : Button
 {
 
 	[Export] string levelPath;
 	[Export] Control[] controlsToHide;
-	[Export] LoadingScreen loadingScreen;
 
 	public override void _Ready(){
+		this.Pressed += ButtonPressed;
 	}
 
 
@@ -16,13 +16,16 @@ public partial class SceneLoadButton : Control
 	{
 	}
 
-	void _on_button_down() {
+	void ButtonPressed() {
 		if (controlsToHide.Length > 0) {
 			foreach (Control c in controlsToHide) {
-				c.Hide();
+				if (c != null) {
+					c.Hide();
+				}
+				
 			}
 		}
-		
-		loadingScreen.LoadLevel(levelPath);
+		GD.Print("Button pressed");
+		LoadingScreen.instance.LoadLevel(levelPath);
 	}
 }

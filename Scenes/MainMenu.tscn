@@ -36,7 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Scene 1 Button" type="Button" parent="Scene Selection" node_paths=PackedStringArray("controlsToHide", "loadingScreen")]
+[node name="Scene 1 Button" type="Button" parent="Scene Selection" node_paths=PackedStringArray("controlsToHide")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,7 +55,6 @@ expand_icon = true
 script = ExtResource("4_x8sk3")
 levelPath = "res://Scenes/TestScene.tscn"
 controlsToHide = [NodePath("..")]
-loadingScreen = NodePath("../../Loading Screen")
 
 [node name="Label" type="Label" parent="Scene Selection"]
 layout_mode = 1
@@ -72,5 +71,3 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Level Select"
 horizontal_alignment = 1
-
-[connection signal="button_down" from="Scene Selection/Scene 1 Button" to="Scene Selection/Scene 1 Button" method="_on_button_down"]

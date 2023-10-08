@@ -17,6 +17,15 @@ public partial class LoadingScreen : Control
 	private bool inputKeyPressed;
 	private float visualLoadScaler = 0f;
 
+	public static LoadingScreen instance;
+	public override void _Ready() {
+		if (instance != null) {
+			instance.QueueFree();
+		}
+		
+		instance = this;
+	}
+
 	public override void _Process(double delta){
 
 		if (loading) {
@@ -27,7 +36,7 @@ public partial class LoadingScreen : Control
 			if (status == ResourceLoader.ThreadLoadStatus.InProgress || visualLoadScaler < 1f)
 			{
 				progressBar.Value = (double)progress[0] * 10 * visualLoadScaler + 90 * visualLoadScaler;
-				GD.Print((int)(visualLoadScaler * 100) + "%, " + progress[0]);
+				//GD.Print((int)(visualLoadScaler * 100) + "%, " + progress[0]);
 			}
 			else if (status == ResourceLoader.ThreadLoadStatus.InvalidResource)
 			{
