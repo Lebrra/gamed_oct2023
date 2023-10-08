@@ -11,13 +11,15 @@ var power: float = 0
 func _physics_process(delta):
 	if linear_velocity.y < 0.0001 && linear_velocity.y > -0.0001:
 		anim.play("Idle_001")
+		fired = false
 	else:
 		anim.play("Flying")
+		fired = true
 		
-	if Input.is_action_pressed("Fire"):
+	if !fired and Input.is_action_pressed("Fire"):
 		power = clampf(power + delta * powerBuildUpSpeed, 0, 100)
 		
-	if Input.is_action_just_released("Fire"):
+	if !fired and Input.is_action_just_released("Fire"):
 		fired = true
 		var direction = position.direction_to(Arrow.global_position)
 		linear_velocity = power * jumpMultiplier * direction
