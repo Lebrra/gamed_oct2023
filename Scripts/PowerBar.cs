@@ -7,7 +7,7 @@ public partial class PowerBar : Node
 	[Export] ProgressBar bar;
 	[Export] Sprite3D sprite;
 	public override void _Ready(){
-		UiGlobal.UpdatePowerUI += UpdatePower;
+		
 	}
 
 	
@@ -15,10 +15,10 @@ public partial class PowerBar : Node
 
 	}
 
-	void UpdatePower(float amt) {
+	public void UpdatePower(float amt) {
 		if (amt > 0){
 			sprite.Show();
-			bar.value = amt;
+			bar.Value = amt;
 		}
 		else {
 			sprite.Hide();

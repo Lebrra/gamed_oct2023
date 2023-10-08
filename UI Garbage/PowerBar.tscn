@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://1hbmr5jdgv18"]
+
+[ext_resource type="Script" path="res://Scripts/PowerBar.cs" id="1_2nr5f"]
+[ext_resource type="PackedScene" uid="uid://cv20kd3lsaaa1" path="res://UI Garbage/PowerBarProgress.tscn" id="2_m7ss5"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_815jd"]
+viewport_path = NodePath("PowerBar/SubViewport")
+
+[node name="PowerBar" type="Node3D" node_paths=PackedStringArray("bar", "sprite")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38185, 0)
+script = ExtResource("1_2nr5f")
+bar = NodePath("SubViewport/PowerBarProgress")
+sprite = NodePath("Sprite3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.9041, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_815jd")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+
+[node name="PowerBarProgress" parent="SubViewport" instance=ExtResource("2_m7ss5")]
