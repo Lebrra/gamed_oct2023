@@ -10,7 +10,7 @@ func _ready():
 	playerNode = get_node(player)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var v = playerNode.linear_velocity
 	v.x = clampf(v.x, -1, 1)
 	v.y = clampf(v.y, -1, 1)
