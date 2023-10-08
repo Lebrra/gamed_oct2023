@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://byc4klo02biic"]
+
+[ext_resource type="Texture2D" uid="uid://bn5q6ipfolfhg" path="res://Art/barn.png" id="1_hnouk"]
+
+[node name="Barn" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 0.997683, 0.0680327, 0, -0.0680327, 0.997683, 45.0056, 3.19059, -16.3681)
+texture = ExtResource("1_hnouk")

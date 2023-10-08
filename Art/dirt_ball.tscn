@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy3lpjuadnsww"]
+
+[ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="1_5qb86"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6hty"]
+albedo_texture = ExtResource("1_5qb86")
+
+[sub_resource type="SphereMesh" id="SphereMesh_t2dqc"]
+material = SubResource("StandardMaterial3D_n6hty")
+radial_segments = 4
+rings = 12
+
+[node name="Dirt Ball" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.893765, -19.428)
+mesh = SubResource("SphereMesh_t2dqc")
