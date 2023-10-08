@@ -4,7 +4,7 @@ using System;
 public partial class SceneLoadButton : Button
 {
 
-	[Export] string levelPath;
+	[Export] Resource levelPath;
 	[Export] Control[] controlsToHide;
 
 	public override void _Ready(){
@@ -26,6 +26,6 @@ public partial class SceneLoadButton : Button
 			}
 		}
 		GD.Print("Button pressed");
-		LoadingScreen.instance.LoadLevel(levelPath);
+		LoadingScreen.instance.LoadLevel(levelPath.ResourcePath);
 	}
 }

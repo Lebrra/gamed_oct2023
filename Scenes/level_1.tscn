@@ -63,11 +63,7 @@ visible = false
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("7_tn4xm")]
 
 [node name="Restart" parent="CanvasLayer/Pause Menu/VBoxContainer" index="1" node_paths=PackedStringArray("controlsToHide")]
-levelPath = "res://Scenes/level_1.tscn"
 controlsToHide = [NodePath("../..")]
-
-[node name="MainMenu" parent="CanvasLayer/Pause Menu/VBoxContainer" index="2"]
-levelPath = "res://Scenes/MainMenu.tscn"
 
 [node name="Loading Screen" parent="CanvasLayer" instance=ExtResource("8_101ua")]
 visible = false

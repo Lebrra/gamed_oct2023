@@ -64,11 +64,7 @@ visible = false
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("3_61o5j")]
 
 [node name="Restart" parent="CanvasLayer/Pause Menu/VBoxContainer" index="1" node_paths=PackedStringArray("controlsToHide")]
-levelPath = "res://Scenes/level_1.tscn"
 controlsToHide = [NodePath("../..")]
-
-[node name="MainMenu" parent="CanvasLayer/Pause Menu/VBoxContainer" index="2"]
-levelPath = "res://Scenes/MainMenu.tscn"
 
 [node name="Loading Screen" parent="CanvasLayer" instance=ExtResource("4_k8cfc")]
 visible = false
@@ -94,10 +90,11 @@ shape = SubResource("ConvexPolygonShape3D_xq3yl")
 [node name="Player" parent="." instance=ExtResource("7_8bf8v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1.38185, 0)
 
-[node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("8_mxajn")]
+[node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode", "zoomToNode") instance=ExtResource("8_mxajn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.542, 12.009)
 player = NodePath("../Player")
 playerNode = NodePath("../Player")
+zoomToNode = NodePath("../Scarecrow/LookAheadPoint")
 
 [node name="Background" type="Sprite3D" parent="."]
 transform = Transform3D(21.545, 0, 0, 0, 21.545, 0, 0, 0, 21.545, 0, 0, -79.0394)
@@ -148,3 +145,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3462, 25, 0)
 
 [editable path="CanvasLayer/Pause Menu"]
 [editable path="Player"]
+[editable path="Scarecrow"]
