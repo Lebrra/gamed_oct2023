@@ -1,5 +1,5 @@
 extends Label
-
+var tween: Tween
 @export var speedOfFade: float
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,7 +8,8 @@ func _ready():
 	
 func StartFade(newText: String)-> void:
 	text = newText
-	var tween = get_tree().create_tween()
+	if tween:
+		tween.kill()
 	tween = create_tween()
 	
 	tween.parallel().tween_property(self, "theme_override_colors/font_color", Color.WHITE, speedOfFade)

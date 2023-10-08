@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c52258ujjoaw0"]
+
+[ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="1_65p2x"]
+[ext_resource type="Script" path="res://Scenes/FadeIn_FadeOut_UI.gd" id="2_gq6dc"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lmxjx"]
+
+[node name="Tutorial Text" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_65p2x")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 183.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/outline_size = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_lmxjx")
+text = "Hold Left Mouse to Jump!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_gq6dc")
+speedOfFade = 5.0
