@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7mbxk8e8ah6o"]
+[gd_scene load_steps=18 format=3 uid="uid://c7mbxk8e8ah6o"]
 
 [ext_resource type="Script" path="res://Scenes/Slingshot.gd" id="1_xhrfn"]
 [ext_resource type="Texture2D" uid="uid://tm5crdh32c2l" path="res://Art/Character/textures/OuvertToMap_DefaultMaterial_BaseColor.png" id="3_fk1gt"]
@@ -11,6 +11,8 @@
 size = Vector3(1, 1.53227, 1)
 
 [sub_resource type="QuadMesh" id="QuadMesh_l54sq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rqfvs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0rsjc"]
 albedo_texture = ExtResource("3_fk1gt")
@@ -601,22 +603,30 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_xhrfn")
-Arrow = NodePath("Arrow/MeshInstance3D/Center")
+Arrow = NodePath("Arrow/UmbrellaClosed/Center")
 anim = NodePath("Graphics/AnimationPlayer")
 powerBar = NodePath("PowerBar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_4sm5o")
 
-[node name="Arrow" type="Node3D" parent="."]
+[node name="Arrow" type="Node3D" parent="." node_paths=PackedStringArray("rb", "umbrellaClosed", "umbrellaOpen")]
 script = ExtResource("6_e6yar")
+rb = NodePath("..")
+umbrellaClosed = NodePath("UmbrellaClosed")
+umbrellaOpen = NodePath("UmbrellaOpen")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Arrow"]
-transform = Transform3D(1, 0, 0, 0, 0.155956, 0, 0, 0, 1, 1.03231, 0, 0)
+[node name="UmbrellaClosed" type="MeshInstance3D" parent="Arrow"]
+transform = Transform3D(1, 0, 0, 0, 0.155956, 0, 0, 0, 1, 1, 0, 0)
 mesh = SubResource("QuadMesh_l54sq")
 
-[node name="Center" type="Node3D" parent="Arrow/MeshInstance3D"]
+[node name="Center" type="Node3D" parent="Arrow/UmbrellaClosed"]
 transform = Transform3D(1, 0, 0, 0, 6.41208, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="UmbrellaOpen" type="MeshInstance3D" parent="Arrow"]
+transform = Transform3D(0.160808, 0, 0, 0, 1, 0, 0, 0, 1, 1.45333, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_rqfvs")
 
 [node name="Graphics" type="Node3D" parent="."]
 transform = Transform3D(0.285, 0, 0, 0, 0.285, 0, 0, 0, 0.285, 0, -0.749434, 0)
