@@ -1,0 +1,178 @@
+[gd_scene load_steps=22 format=3 uid="uid://bnunx7baaap32"]
+
+[ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ldejs"]
+[ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_deyh6"]
+[ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="4_voayp"]
+[ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="5_a65qy"]
+[ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="6_kbuuc"]
+[ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="7_5dn06"]
+[ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="8_cyvio"]
+[ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="9_qvw54"]
+[ext_resource type="PackedScene" uid="uid://cfx0gmeqs4hge" path="res://Objects/scarecrow.tscn" id="10_vom1v"]
+[ext_resource type="ArrayMesh" uid="uid://h22rn3i08c0r" path="res://Objects/grassClumpThing.tres" id="11_c55xb"]
+[ext_resource type="PackedScene" uid="uid://bxt64a1ckwssh" path="res://Objects/corn.tscn" id="12_buxur"]
+[ext_resource type="Script" path="res://Scenes/OnEnterUpdateTutorialText.gd" id="13_1rj2o"]
+[ext_resource type="PackedScene" uid="uid://cof32tfbl2pmq" path="res://Objects/wall.tscn" id="14_oqulh"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2dbfk"]
+sky_top_color = Color(0.141176, 0.466667, 0.721569, 1)
+sky_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+ground_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+
+[sub_resource type="Sky" id="Sky_btn2r"]
+sky_material = SubResource("ProceduralSkyMaterial_2dbfk")
+
+[sub_resource type="Environment" id="Environment_43wbx"]
+background_mode = 2
+sky = SubResource("Sky_btn2r")
+ambient_light_source = 2
+ambient_light_color = Color(0.439216, 0.439216, 0.439216, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i3r6"]
+albedo_texture = ExtResource("6_kbuuc")
+
+[sub_resource type="BoxMesh" id="BoxMesh_r1l23"]
+size = Vector3(180, 1, 60)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xq3yl"]
+points = PackedVector3Array(-90, -0.5, -30, -90, 0.5, -30, 90, -0.5, -30, -90, -0.5, 30, -90, 0.5, 30, 90, 0.5, -30, 90, -0.5, 30, 90, 0.5, 30)
+
+[sub_resource type="MultiMesh" id="MultiMesh_e6h7q"]
+transform_format = 1
+instance_count = 128
+mesh = ExtResource("11_c55xb")
+buffer = PackedFloat32Array(0, 1.001, 0, 101.452, 1.001, 0, 0, 0.381782, 0, 0, -1.001, -16.2682, 1.001, 0, 0, -52.986, 0, -1.001, 0, -0.5, 0, 0, -1.001, -25.9864, -1.001, 0, 0, 16.6147, 0, 1.001, 0, 0.5, 0, 0, -1.001, -1.95833, -1.001, 0, 0, -37.9323, 0, 1.001, 0, 0.5, 0, 0, -1.001, -2.71901, 0, 0, 1.001, 73.9589, 0, -1.001, 0, -0.5, 1.001, 0, 0, 26.5539, 0, 0, -1.001, 25.8539, 0, 1.001, 0, 0.5, 1.001, 0, 0, 10.3964, -1.001, 0, 0, -26.985, 0, 1.001, 0, 0.5, 0, 0, -1.001, -28.7801, 1.001, 0, 0, 38.5338, 0, -1.001, 0, -0.5, 0, 0, -1.001, -15.4245, 0, 0, -1.001, 53.4828, 0, 1.001, 0, 0.5, 1.001, 0, 0, -5.59841, -1.001, 0, 0, -57.4419, 0, 1.001, 0, 0.5, 0, 0, -1.001, 12.8787, 0, 0, 1.001, 13.9718, 0, -1.001, 0, -0.5, 1.001, 0, 0, 15.0524, 0, 0, -1.001, 72.7361, 0, 1.001, 0, 0.5, 1.001, 0, 0, -15.7959, -1.001, 0, 0, -73.9577, 0, 1.001, 0, 0.5, 0, 0, -1.001, -16.8322, 0, 0, 1.001, 24.8909, 0, -1.001, 0, -0.5, 1.001, 0, 0, 11.1138, 0, 0, 1.001, 26.7969, 0, -1.001, 0, -0.5, 1.001, 0, 0, 17.2055, 0, 0, 1.001, -18.8693, 0, -1.001, 0, -0.5, 1.001, 0, 0, 24.7084, 1.001, 0, 0, 52.6408, 0, -1.001, 0, -0.5, 0, 0, -1.001, 4.57181, -1.001, 0, 0, -69.383, 0, 1.001, 0, 0.5, 0, 0, -1.001, -27.2797, 0, 0, -1.001, 86.2847, 0, 1.001, 0, 0.5, 1.001, 0, 0, -7.79867, 0, 0, 1.001, -7.22264, 0, -1.001, 0, -0.5, 1.001, 0, 0, 24.1642, 0, 0, 1.001, 7.48494, 0, -1.001, 0, -0.5, 1.001, 0, 0, 11.0432, 0, 0, 1.001, -17.4147, 0, -1.001, 0, -0.5, 1.001, 0, 0, 14.6518, -1.001, 0, 0, -51.0366, 0, 1.001, 0, 0.5, 0, 0, -1.001, -26.3374, 1.001, 0, 0, 23.1506, 0, -1.001, 0, -0.5, 0, 0, -1.001, -7.62303, -1.001, 0, 0, 40.2706, 0, 1.001, 0, 0.5, 0, 0, -1.001, -25.9871, 0, 0, -1.001, 39.3635, 0, 1.001, 0, 0.5, 1.001, 0, 0, 0.480573, 1.001, 0, 0, -38.3684, 0, -1.001, 0, -0.5, 0, 0, -1.001, -24.8892, 0, 0, -1.001, 38.4403, 0, 1.001, 0, 0.5, 1.001, 0, 0, -6.88946, 0, 0, -1.001, -14.5444, 0, 1.001, 0, 0.5, 1.001, 0, 0, 14.978, 0, 0, -1.001, -46.3025, 0, 1.001, 0, 0.5, 1.001, 0, 0, 27.9606, -1.001, 0, 0, 16.8349, 0, 1.001, 0, 0.5, 0, 0, -1.001, -5.70401, 1.001, 0, 0, 90.496, 0, -1.001, 0, -0.5, 0, 0, -1.001, 20.1502, 0, 0, 1.001, 31.1512, 0, -1.001, 0, -0.5, 1.001, 0, 0, 24.2527, 0, 0, -1.001, 82.109, 0, 1.001, 0, 0.5, 1.001, 0, 0, 26.9896, 1.001, 0, 0, -0.0787735, 0, -1.001, 0, -0.5, 0, 0, -1.001, -28.2089, 0, 0, -1.001, 75.6426, 0, 1.001, 0, 0.5, 1.001, 0, 0, 29.167, -1.001, 0, 0, -75.9531, 0, 1.001, 0, 0.5, 0, 0, -1.001, 0.605642, 0, 0, 1.001, 47.3542, 0, -1.001, 0, -0.5, 1.001, 0, 0, 15.3887, -1.001, 0, 0, 73.3467, 0, 1.001, 0, 0.5, 0, 0, -1.001, -27.9394, 0, 0, 1.001, -17.936, 0, -1.001, 0, -0.5, 1.001, 0, 0, 1.97317, 0, 0, -1.001, 40.9087, 0, 1.001, 0, 0.5, 1.001, 0, 0, 20.3907, 1.001, 0, 0, 91.9959, 0, -1.001, 0, -0.5, 0, 0, -1.001, -14.7512, 1.001, 0, 0, -33.27, 0, -1.001, 0, -0.5, 0, 0, -1.001, -27.7962, 1.001, 0, 0, -7.21484, 0, -1.001, 0, -0.5, 0, 0, -1.001, -27.6763, 0, 0, -1.001, 21.8977, 0, 1.001, 0, 0.5, 1.001, 0, 0, 29.9737, -1.001, 0, 0, -76.107, 0, 1.001, 0, 0.5, 0, 0, -1.001, -2.50993, 0, 0, -1.001, 21.0292, 0, 1.001, 0, 0.5, 1.001, 0, 0, 9.98186, -1.001, 0, 0, -50.0626, 0, 1.001, 0, 0.5, 0, 0, -1.001, 2.22949, 0, 0, 1.001, 6.11887, 0, -1.001, 0, -0.5, 1.001, 0, 0, 3.63788, -1.001, 0, 0, 68.3321, 0, 1.001, 0, 0.5, 0, 0, -1.001, -29.0984, 0, 0, 1.001, -48.5523, 0, -1.001, 0, -0.5, 1.001, 0, 0, 10.9552, 1.001, 0, 0, -22.0425, 0, -1.001, 0, -0.5, 0, 0, -1.001, -27.8791, 1.001, 0, 0, 67.9789, 0, -1.001, 0, -0.5, 0, 0, -1.001, -21.8971, 1.001, 0, 0, -12.4472, 0, -1.001, 0, -0.5, 0, 0, -1.001, -9.42163, 1.001, 0, 0, 24.1803, 0, -1.001, 0, -0.5, 0, 0, -1.001, -22.5298, -1.001, 0, 0, -30.4546, 0, 1.001, 0, 0.5, 0, 0, -1.001, -25.5696, -1.001, 0, 0, -67.989, 0, 1.001, 0, 0.5, 0, 0, -1.001, 23.2606, -1.001, 0, 0, -12.9074, 0, 1.001, 0, 0.5, 0, 0, -1.001, -14.0411, 0, 0, -1.001, -27.4595, 0, 1.001, 0, 0.5, 1.001, 0, 0, 23.8461, -1.001, 0, 0, -45.1816, 0, 1.001, 0, 0.5, 0, 0, -1.001, 3.11217, 0, 0, 1.001, -72.3072, 0, -1.001, 0, -0.5, 1.001, 0, 0, -13.5016, 1.001, 0, 0, 17.9494, 0, -1.001, 0, -0.5, 0, 0, -1.001, -9.87039, 1.001, 0, 0, 83.014, 0, -1.001, 0, -0.5, 0, 0, -1.001, 22.3446, 0, 0, 1.001, 8.08256, 0, -1.001, 0, -0.5, 1.001, 0, 0, 21.0903, 0, 0, -1.001, 96.8895, 0, 1.001, 0, 0.5, 1.001, 0, 0, -9.34821, 0, 0, -1.001, 60.6554, 0, 1.001, 0, 0.5, 1.001, 0, 0, 29.476, 0, 0, 1.001, 2.15304, 0, -1.001, 0, -0.5, 1.001, 0, 0, 14.4555, 0, 0, -1.001, -60.1719, 0, 1.001, 0, 0.5, 1.001, 0, 0, 25.8645, 0, 0, -1.001, -31.6523, 0, 1.001, 0, 0.5, 1.001, 0, 0, 17.8883, 0, 0, -1.001, 87.0205, 0, 1.001, 0, 0.5, 1.001, 0, 0, -19.3288, -1.001, 0, 0, -26.3174, 0, 1.001, 0, 0.5, 0, 0, -1.001, 4.81172, 1.001, 0, 0, -23.7195, 0, -1.001, 0, -0.5, 0, 0, -1.001, -17.2346, 1.001, 0, 0, 87.6896, 0, -1.001, 0, -0.5, 0, 0, -1.001, -27.2979, 0, 0, 1.001, -68.5975, 0, -1.001, 0, -0.5, 1.001, 0, 0, -11.4887, 1.001, 0, 0, 100.883, 0, -1.001, 0, -0.5, 0, 0, -1.001, -22.6275, 0, 0, -1.001, 41.5693, 0, 1.001, 0, 0.5, 1.001, 0, 0, 5.78043, -1.001, 0, 0, -74.7038, 0, 1.001, 0, 0.5, 0, 0, -1.001, 0.800063, 0, 0, 1.001, -41.3947, 0, -1.001, 0, -0.5, 1.001, 0, 0, 8.36063, -1.001, 0, 0, -60.8648, 0, 1.001, 0, 0.5, 0, 0, -1.001, 5.13602, 0, 0, -1.001, 79.0762, 0, 1.001, 0, 0.5, 1.001, 0, 0, 9.76179, -1.001, 0, 0, -74.7231, 0, 1.001, 0, 0.5, 0, 0, -1.001, -12.1645, 0, 0, -1.001, 73.4941, 0, 1.001, 0, 0.5, 1.001, 0, 0, 1.9902, 0, 0, 1.001, -66.1134, 0, -1.001, 0, -0.5, 1.001, 0, 0, 23.5764, -1.001, 0, 0, 3.57265, 0, 1.001, 0, 0.5, 0, 0, -1.001, -7.76759, 0, 0, -1.001, 90.1145, 0, 1.001, 0, 0.5, 1.001, 0, 0, -9.14427, -1.001, 0, 0, 9.18034, 0, 1.001, 0, 0.5, 0, 0, -1.001, 0.734056, -1.001, 0, 0, -25.41, 0, 1.001, 0, 0.5, 0, 0, -1.001, -18.4227, 0, 0, -1.001, 41.5168, 0, 1.001, 0, 0.5, 1.001, 0, 0, 5.41822, 0, 0, -1.001, 100.997, 0, 1.001, 0, 0.5, 1.001, 0, 0, 3.16592, 0, 0, 1.001, -61.7985, 0, -1.001, 0, -0.5, 1.001, 0, 0, 14.4431, -1.001, 0, 0, -74.4342, 0, 1.001, 0, 0.5, 0, 0, -1.001, -21.2116, 1.001, 0, 0, 81.5936, 0, -1.001, 0, -0.5, 0, 0, -1.001, -21.1329, 0, 0, 1.001, 63.9857, 0, -1.001, 0, -0.5, 1.001, 0, 0, 29.9921, 0, 0, -1.001, 96.2855, 0, 1.001, 0, 0.5, 1.001, 0, 0, -21.2905, 0, 0, -1.001, 68.1701, 0, 1.001, 0, 0.5, 1.001, 0, 0, 27.7107, 0, 0, -1.001, -28.2902, 0, 1.001, 0, 0.5, 1.001, 0, 0, 28.9834, 0, 0, -1.001, 64.3231, 0, 1.001, 0, 0.5, 1.001, 0, 0, 15.3682, -1.001, 0, 0, 6.04656, 0, 0, -1.001, -0.146192, 0, -1.001, 0, -29.751, 0, 0, 1.001, -56.7041, 0, -1.001, 0, -0.5, 1.001, 0, 0, -7.92387, 0, 0, 1.001, -35.2414, 0, -1.001, 0, -0.5, 1.001, 0, 0, 19.6208, 0, 0, 1.001, -46.264, 0, -1.001, 0, -0.5, 1.001, 0, 0, 22.5493, 1.001, 0, 0, 31.1164, 0, -1.001, 0, -0.5, 0, 0, -1.001, -24.8778, -1.001, 0, 0, 1.68253, 0, 1.001, 0, 0.5, 0, 0, -1.001, -21.6174, 0, 0, 1.001, -69.2107, 0, -1.001, 0, -0.5, 1.001, 0, 0, 17.422, 0, 0, 1.001, -53.5174, 0, -1.001, 0, -0.5, 1.001, 0, 0, -6.78467, -1.001, 0, 0, -27.2884, 0, 1.001, 0, 0.5, 0, 0, -1.001, 10.7155, 1.001, 0, 0, -13.8, 0, -1.001, 0, -0.5, 0, 0, -1.001, -22.2159, 1.001, 0, 0, -48.1513, 0, -1.001, 0, -0.5, 0, 0, -1.001, -22.8917, 1.001, 0, 0, -49.7714, 0, -1.001, 0, -0.5, 0, 0, -1.001, -28.1795, -1.001, 0, 0, 42.1495, 0, 1.001, 0, 0.5, 0, 0, -1.001, -22.1331, 1.001, 0, 0, 25.4975, 0, -1.001, 0, -0.5, 0, 0, -1.001, -27.5866, 0, 0, 1.001, -14.3666, 0, -1.001, 0, -0.5, 1.001, 0, 0, 8.63321, 0, 0, 1.001, 13.6392, 0, -1.001, 0, -0.5, 1.001, 0, 0, 25.1488, 1.001, 0, 0, 45.247, 0, -1.001, 0, -0.5, 0, 0, -1.001, 1.81579, 0, 0, -1.001, 99.5479, 0, 1.001, 0, 0.5, 1.001, 0, 0, -10.0556, -1.001, 0, 0, -48.6705, 0, 1.001, 0, 0.5, 0, 0, -1.001, -7.10004, 1.001, 0, 0, -10.8608, 0, -1.001, 0, -0.5, 0, 0, -1.001, -11.7645, 0, 0, 1.001, 35.588, 0, -1.001, 0, -0.5, 1.001, 0, 0, 12.749, 0, 0, -1.001, 1.21518, 0, 1.001, 0, 0.5, 1.001, 0, 0, 16.053, 0, 0, 1.001, -46.9182, 0, -1.001, 0, -0.5, 1.001, 0, 0, -13.1791, -1.001, 0, 0, -51.8382, 0, 1.001, 0, 0.5, 0, 0, -1.001, 6.99688, 1.001, 0, 0, -24.7987, 0, -1.001, 0, -0.5, 0, 0, -1.001, -21.2661, 0, 0, -1.001, 15.806, 0, 1.001, 0, 0.5, 1.001, 0, 0, 23.4328, 1.001, 0, 0, 76.9181, 0, -1.001, 0, -0.5, 0, 0, -1.001, -0.60952, 1.001, 0, 0, -37.6756, 0, -1.001, 0, -0.5, 0, 0, -1.001, -29.0788, 1.001, 0, 0, 66.6838, 0, -1.001, 0, -0.5, 0, 0, -1.001, -26.7686, -1.001, 0, 0, -2.50178, 0, 1.001, 0, 0.5, 0, 0, -1.001, -8.15497, 0, 0, 1.001, 39.1535, 0, -1.001, 0, -0.5, 1.001, 0, 0, 12.8295)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_77sx4"]
+size = Vector3(25.1408, 25.2087, 18.3951)
+
+[node name="Level3" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Score" parent="CanvasLayer" instance=ExtResource("2_ldejs")]
+
+[node name="Victory Screen" parent="CanvasLayer" instance=ExtResource("3_deyh6")]
+visible = false
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("4_voayp")]
+
+[node name="Restart" parent="CanvasLayer/Pause Menu/VBoxContainer" index="1" node_paths=PackedStringArray("controlsToHide")]
+levelPath = "res://Scenes/level_1.tscn"
+controlsToHide = [NodePath("../..")]
+
+[node name="MainMenu" parent="CanvasLayer/Pause Menu/VBoxContainer" index="2"]
+levelPath = "res://Scenes/MainMenu.tscn"
+
+[node name="Loading Screen" parent="CanvasLayer" instance=ExtResource("5_a65qy")]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_43wbx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+material_override = SubResource("StandardMaterial3D_1i3r6")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_r1l23")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConvexPolygonShape3D_xq3yl")
+
+[node name="Player" parent="." instance=ExtResource("7_5dn06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48, 1.38185, 0)
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode", "zoomToNode") instance=ExtResource("8_cyvio")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.542, 12.009)
+player = NodePath("../Player")
+playerNode = NodePath("../Player")
+zoomToNode = NodePath("../Scarecrow/LookAheadPoint")
+
+[node name="Background" type="Sprite3D" parent="."]
+transform = Transform3D(21.545, 0, 0, 0, 21.545, 0, 0, 0, 21.545, 0, 0, -79.0394)
+texture = ExtResource("9_qvw54")
+region_rect = Rect2(11.875, 0, 0, 0)
+
+[node name="Scarecrow" parent="." instance=ExtResource("10_vom1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.539, 32.2907, 0)
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.54839, 0, -0.248959)
+multimesh = SubResource("MultiMesh_e6h7q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MultiMeshInstance3D"]
+mesh = ExtResource("11_c55xb")
+
+[node name="Corn" parent="." instance=ExtResource("12_buxur")]
+
+[node name="Corn2" parent="." instance=ExtResource("12_buxur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.661, 2.52286, -19.4896)
+
+[node name="Corn3" parent="." instance=ExtResource("12_buxur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.339, 2.52286, -2.93879)
+
+[node name="Corn4" parent="." instance=ExtResource("12_buxur")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.339, 2.52286, -2.93879)
+
+[node name="Text Update" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.7762, 0, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Text Update"]
+shape = SubResource("BoxShape3D_77sx4")
+script = ExtResource("13_1rj2o")
+text = "Land on top of the Head!"
+
+[node name="Wall" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.921, 5, 0)
+
+[node name="Wall2" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.921, 5, 0)
+
+[node name="Wall3" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.921, 15, 0)
+
+[node name="Wall4" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.921, 25, 0)
+
+[node name="Wall5" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92099, 5, 0)
+
+[node name="Wall6" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.07901, 5, 0)
+
+[node name="Wall7" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.07901, 15, 0)
+
+[node name="Wall8" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.07901, 25, 0)
+
+[node name="Wall9" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.079, 5, 0)
+
+[node name="Wall10" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.079, 5, 0)
+
+[node name="Wall11" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.079, 15, 0)
+
+[node name="Wall12" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.079, 25, 0)
+
+[node name="Wall13" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.079, 5, 0)
+
+[connection signal="body_entered" from="Text Update" to="Text Update/CollisionShape3D" method="_on_area_3d_body_entered"]
+
+[editable path="CanvasLayer/Pause Menu"]
+[editable path="Player"]
+[editable path="Scarecrow"]

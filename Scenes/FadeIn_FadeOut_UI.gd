@@ -4,7 +4,6 @@ var tween: Tween
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	UiGlobal.UpdatePopupLabel.connect(StartFade)
-	StartFade(text)
 	
 func StartFade(newText: String)-> void:
 	text = newText

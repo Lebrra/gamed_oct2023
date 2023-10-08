@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfx0gmeqs4hge"]
+
+[ext_resource type="Texture2D" uid="uid://ch1l30pvudoqh" path="res://Art/scarecrow.png" id="1_yfqrd"]
+[ext_resource type="PackedScene" uid="uid://b2a7at5lkkjtn" path="res://Objects/head.tscn" id="2_l4jg8"]
+
+[node name="Scarecrow" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.539, 2.745, 0)
+pixel_size = 0.005
+texture = ExtResource("1_yfqrd")
+
+[node name="Head" parent="." instance=ExtResource("2_l4jg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201, 2.24, 0)
+
+[node name="LookAheadPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.40852, 1.3599, 0)

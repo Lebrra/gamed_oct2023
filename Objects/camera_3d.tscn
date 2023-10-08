@@ -7,6 +7,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.93492)
 script = ExtResource("1_n54fo")
 player = NodePath("../CharacterBody3D")
 speedOfCameraX = 2.5
-speedOfCameraY = 1.0
+speedOfCameraY = 3.0
 lookAheadAmountX = 3.0
 lookAheadAmountY = 2.0

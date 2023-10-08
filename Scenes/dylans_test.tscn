@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://clxglphbersgo"]
+[gd_scene load_steps=9 format=3 uid="uid://clxglphbersgo"]
 
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="1_uvrdg"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="2_eei6e"]
+[ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="3_e1eud"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_76ac3"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -31,13 +32,14 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6o0f8")
 
-[node name="Camera3D" parent="." instance=ExtResource("1_uvrdg")]
+[node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("1_uvrdg")]
 current = true
 player = NodePath("../Player")
 speedOfCameraX = 5.0
 speedOfCameraY = 5000.0
 lookAheadAmountX = 1.0
 lookAheadAmountY = 0.0
+playerNode = NodePath("../Player")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 
@@ -50,3 +52,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.891794, 0)
 shape = SubResource("ConvexPolygonShape3D_f5slc")
 
 [node name="Player" parent="." instance=ExtResource("2_eei6e")]
+
+[node name="Score" parent="." instance=ExtResource("3_e1eud")]

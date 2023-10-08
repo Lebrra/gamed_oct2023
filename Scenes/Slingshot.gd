@@ -25,6 +25,7 @@ func _physics_process(delta):
 		linear_velocity = power * jumpMultiplier * direction
 		power = 0
 		anim.play("Flying")
+		GameManager.StrokeIncrement.emit(1)
 	
 	powerBar.UpdatePower(power)
 	

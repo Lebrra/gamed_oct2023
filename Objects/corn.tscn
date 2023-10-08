@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxt64a1ckwssh"]
+
+[ext_resource type="Texture2D" uid="uid://b21ijhpijpuyi" path="res://Art/Corn1.png" id="1_myp5m"]
+
+[node name="Corn" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.339, 2.52286, -11.4894)
+texture = ExtResource("1_myp5m")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cof32tfbl2pmq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el35n"]
+albedo_color = Color(0.858824, 0.529412, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xa38e"]
+material = SubResource("StandardMaterial3D_el35n")
+size = Vector3(10, 10, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xy7g8"]
+points = PackedVector3Array(5, 5, 0.5, 5, 5, -0.5, -5, 5, 0.5, 5, -5, 0.5, 5, -5, -0.5, -5, 5, -0.5, -5, -5, 0.5, -5, -5, -0.5)
+
+[node name="Wall" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3462, 5, 0)
+
+[node name="Block" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xa38e")
+skeleton = NodePath("../../Player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_xy7g8")

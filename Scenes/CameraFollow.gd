@@ -9,6 +9,7 @@ var levelEnd: bool = false
 var animPlaying: bool = false
 @export var playerNode: Node3D
 @export var zoomToNode: Node3D
+var tween
 var currentNode
 func _ready():
 	#playerNode = get_node(player)
@@ -43,7 +44,8 @@ func cameraFollow(delta):
 		global_transform.origin.x = lerp(global_transform.origin.x, currentNode.global_transform.origin.x, speedOfCameraX * delta)
 		if !animPlaying:
 			animPlaying = true
-			var tween = get_tree().create_tween()
+			if tween:
+				tween.kill()
 			tween = create_tween()
 			tween.tween_property(self, "position", Vector3(global_position.x, global_position.y, global_position.z / 2), 2)
 

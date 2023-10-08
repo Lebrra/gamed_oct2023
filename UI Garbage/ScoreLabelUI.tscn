@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgygvenggai13"]
+
+[ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="1_w6tcy"]
+[ext_resource type="Script" path="res://Scenes/ScoreKeeper.gd" id="2_wdbok"]
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_w6tcy")
+
+[node name="Current Score Text" type="Label" parent="."]
+layout_mode = 2
+offset_left = 1145.0
+offset_right = 1280.0
+offset_bottom = 70.0
+grow_horizontal = 0
+text = "Strokes: 0"
+script = ExtResource("2_wdbok")
