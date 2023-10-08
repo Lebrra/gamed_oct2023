@@ -1,18 +1,19 @@
-[gd_scene load_steps=22 format=3 uid="uid://bnunx7baaap32"]
+[gd_scene load_steps=23 format=3 uid="uid://b6adp0gm3ypbj"]
 
-[ext_resource type="PackedScene" uid="uid://bgygvenggai13" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ldejs"]
+[ext_resource type="PackedScene" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ldejs"]
 [ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_deyh6"]
-[ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="4_voayp"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="4_voayp"]
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="5_a65qy"]
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="6_kbuuc"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="7_5dn06"]
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="8_cyvio"]
 [ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="9_qvw54"]
-[ext_resource type="PackedScene" uid="uid://cfx0gmeqs4hge" path="res://Objects/scarecrow.tscn" id="10_vom1v"]
-[ext_resource type="ArrayMesh" uid="uid://h22rn3i08c0r" path="res://Objects/grassClumpThing.tres" id="11_c55xb"]
-[ext_resource type="PackedScene" uid="uid://bxt64a1ckwssh" path="res://Objects/corn.tscn" id="12_buxur"]
+[ext_resource type="PackedScene" path="res://Objects/scarecrow.tscn" id="10_vom1v"]
+[ext_resource type="ArrayMesh" uid="uid://dkfj3btpxj6aq" path="res://Objects/grassClumpThing.tres" id="11_c55xb"]
+[ext_resource type="PackedScene" path="res://Objects/corn.tscn" id="12_buxur"]
 [ext_resource type="Script" path="res://Scenes/OnEnterUpdateTutorialText.gd" id="13_1rj2o"]
-[ext_resource type="PackedScene" uid="uid://cof32tfbl2pmq" path="res://Objects/wall.tscn" id="14_oqulh"]
+[ext_resource type="PackedScene" uid="uid://by2k8o08eydyq" path="res://Objects/arrow_powerup.tscn" id="14_kllgo"]
+[ext_resource type="PackedScene" path="res://Objects/wall.tscn" id="14_oqulh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2dbfk"]
 sky_top_color = Color(0.141176, 0.466667, 0.721569, 1)
@@ -140,6 +141,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.921, 15, 0)
 [node name="Wall4" parent="." instance=ExtResource("14_oqulh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.921, 25, 0)
 
+[node name="Wall14" parent="." instance=ExtResource("14_oqulh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.921, 34.9823, 0)
+
 [node name="Wall5" parent="." instance=ExtResource("14_oqulh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92099, 5, 0)
 
@@ -166,6 +170,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.079, 25, 0)
 
 [node name="Wall13" parent="." instance=ExtResource("14_oqulh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.079, 5, 0)
+
+[node name="ArrowPowerup" parent="." instance=ExtResource("14_kllgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 4.1564, 0)
+force = 600.0
+
+[node name="ArrowPowerup4" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("14_kllgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.5534, 13.697, 0)
+force = 700.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup2" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("14_kllgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75561, 14.5753, 0)
+force = 600.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup3" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("14_kllgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9651, 14.5753, 0)
+force = 600.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup5" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("14_kllgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.6951, 5.84159, 0)
+force = 600.0
+timer = NodePath("../ArrowPowerup/Timer")
 
 [connection signal="body_entered" from="Text Update" to="Text Update/CollisionShape3D" method="_on_area_3d_body_entered"]
 

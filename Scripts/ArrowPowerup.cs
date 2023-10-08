@@ -9,10 +9,14 @@ public partial class ArrowPowerup : Area3D
 	private bool invert = false;
 	[Export]
 	private float force = 5F;
+	[Export]
+	private float cooldown = 5F;
+	[Export]
+	private Timer timer;
 	
 	public override void _Ready()
 	{
-		BodyEntered += OnBodyEntered;
+		Initialize();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -24,14 +28,22 @@ public partial class ArrowPowerup : Area3D
 
 	void OnBodyEntered(Node3D node)
 	{
-		if (node.IsInGroup("Player") && node is RigidBody3D rb)
+		if (Visible && node.IsInGroup("Player") && node is RigidBody3D rb)
 		{
 			var direction = new Vector3(Mathf.Cos(Rotation.Z), Mathf.Sin(Rotation.Z), 0F);
 			GD.Print(direction);
 			rb.ApplyForce(direction * force);
 
 			BodyEntered -= OnBodyEntered;
-			QueueFree();
+			Visible = false;
+			timer.Timeout += Initialize;
+			timer.Start(cooldown);
 		}
+	}
+
+	void Initialize()
+	{
+		BodyEntered += OnBodyEntered;
+		Visible = true;
 	}
 }
