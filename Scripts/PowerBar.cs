@@ -6,8 +6,9 @@ public partial class PowerBar : Node
 
 	[Export] ProgressBar bar;
 	[Export] Sprite3D sprite;
+	[Export] SubViewport viewPort;
 	public override void _Ready(){
-		
+		sprite.Texture = viewPort.GetTexture(); ;
 	}
 
 	
