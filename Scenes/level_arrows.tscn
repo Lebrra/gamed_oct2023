@@ -1,0 +1,297 @@
+[gd_scene load_steps=25 format=3 uid="uid://d3hceet1q8uvm"]
+
+[ext_resource type="PackedScene" uid="uid://c52258ujjoaw0" path="res://UI Garbage/tutorial_text.tscn" id="1_wb4go"]
+[ext_resource type="PackedScene" path="res://UI Garbage/ScoreLabelUI.tscn" id="2_ssqex"]
+[ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_37bo1"]
+[ext_resource type="PackedScene" path="res://Scenes/Level_2.tscn" id="4_1edtd"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="5_im3ll"]
+[ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="6_ixi3v"]
+[ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="7_7cywu"]
+[ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="8_m0vly"]
+[ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="9_i7c4l"]
+[ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="10_r7riu"]
+[ext_resource type="Texture2D" uid="uid://ch1l30pvudoqh" path="res://Art/scarecrow.png" id="11_6h8ui"]
+[ext_resource type="PackedScene" uid="uid://b2a7at5lkkjtn" path="res://Objects/head.tscn" id="12_tq0sj"]
+[ext_resource type="ArrayMesh" uid="uid://h22rn3i08c0r" path="res://Objects/grassClumpThing.tres" id="13_d17y6"]
+[ext_resource type="Script" path="res://Scenes/OnEnterUpdateTutorialText.gd" id="14_7plje"]
+[ext_resource type="PackedScene" uid="uid://by2k8o08eydyq" path="res://Objects/arrow_powerup.tscn" id="15_b60ie"]
+[ext_resource type="PackedScene" path="res://Objects/wall.tscn" id="16_m6spi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2dbfk"]
+sky_top_color = Color(0.141176, 0.466667, 0.721569, 1)
+sky_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+ground_horizon_color = Color(0.646078, 0.655975, 0.670505, 1)
+
+[sub_resource type="Sky" id="Sky_btn2r"]
+sky_material = SubResource("ProceduralSkyMaterial_2dbfk")
+
+[sub_resource type="Environment" id="Environment_43wbx"]
+background_mode = 2
+sky = SubResource("Sky_btn2r")
+ambient_light_source = 2
+ambient_light_color = Color(0.439216, 0.439216, 0.439216, 1)
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i3r6"]
+albedo_texture = ExtResource("7_7cywu")
+
+[sub_resource type="BoxMesh" id="BoxMesh_evvx8"]
+size = Vector3(60, 1, 60)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_qhgvt"]
+points = PackedVector3Array(-30, -0.5, -30, -30, 0.5, -30, 30, -0.5, -30, -30, -0.5, 30, -30, 0.5, 30, 30, 0.5, -30, 30, -0.5, 30, 30, 0.5, 30)
+
+[sub_resource type="MultiMesh" id="MultiMesh_huoi4"]
+transform_format = 1
+instance_count = 128
+mesh = ExtResource("13_d17y6")
+buffer = PackedFloat32Array(-1.05939, 0, 0, 7.58112, 0, 1.05939, 0, 0.5, 0, 0, -1.05939, -28.654, 0, 0, -1.08905, 22.4906, 0, 1.08905, 0, 0.5, 1.08905, 0, 0, 22.1444, -1.72754, 0, 0, -2.30049, 0, 1.72754, 0, 0.5, 0, 0, -1.72754, -6.24428, -0.808556, 0, 0, 8.3688, 0, 0.808556, 0, 0.5, 0, 0, -0.808556, -27.8677, 0.582384, 0, 0, 30.1116, 0, -0.582384, 0, -0.5, 0, 0, -0.582384, -5.94035, -0.324458, 0, 0, -1.67802, 0, 0.324458, 0, 0.5, 0, 0, -0.324458, -3.52276, -0.36815, 0, 0, -16.219, 0, 0.36815, 0, 0.5, 0, 0, -0.36815, -25.0198, 0.289699, 0, 0, 36.9022, 0, -0.289699, 0, -0.5, 0, 0, -0.289699, -0.00091958, 0, 0, -1.32526, 7.76775, 0, 1.32526, 0, 0.5, 1.32526, 0, 0, 8.98837, 0.715361, 0, 0, 7.88669, 0, -0.715361, 0, -0.5, 0, 0, -0.715361, -14.9637, 0, 0, 0.683922, 1.62879, 0, -0.683922, 0, -0.5, 0.683922, 0, 0, 14.1482, 0, 0, 0.576545, -2.26399, 0, -0.576545, 0, -0.5, 0.576545, 0, 0, 4.85459, 1.54462, 0, 0, 38.524, 0, -1.54462, 0, -0.5, 0, 0, -1.54462, -19.5853, -0.506826, 0, 0, 16.9033, 0, 0.506826, 0, 0.5, 0, 0, -0.506826, -5.32802, 0, 0, 0.352675, 12.2362, 0, -0.352675, 0, -0.5, 0.352675, 0, 0, 21.3855, -1.48985, 0, 0, 1.95659, 0, 1.48985, 0, 0.5, 0, 0, -1.48985, -25.5701, 0, 0, 1.72217, 18.7806, 0, -1.72217, 0, -0.5, 1.72217, 0, 0, 17.4564, 0, 0, 1.5758, -9.60851, 0, -1.5758, 0, -0.5, 1.5758, 0, 0, 1.45591, 1.62395, 0, 0, 12.5806, 0, -1.62395, 0, -0.5, 0, 0, -1.62395, -24.7335, -1.05116, 0, 0, 23.7972, 0, 1.05116, 0, 0.5, 0, 0, -1.05116, -26.4994, 0, 0, 1.16547, -9.9511, 0, -1.16547, 0, -0.5, 1.16547, 0, 0, -18.8507, 0, 0, 0.82333, 12.3589, 0, -0.82333, 0, -0.5, 0.82333, 0, 0, 10.4798, 0.88266, 0, 0, 1.89299, 0, -0.88266, 0, -0.5, 0, 0, -0.88266, -21.2955, 1.56402, 0, 0, -2.303, 0, -1.56402, 0, -0.5, 0, 0, -1.56402, -16.0484, 0.259256, 0, 0, 21.3995, 0, -0.259256, 0, -0.5, 0, 0, -0.259256, 7.24595, -0.986905, 0, 0, -14.2909, 0, 0.986905, 0, 0.5, 0, 0, -0.986905, 5.38328, -0.399972, 0, 0, 19.6658, 0, 0.399972, 0, 0.5, 0, 0, -0.399972, -8.06599, 0.796883, 0, 0, -4.28946, 0, -0.796883, 0, -0.5, 0, 0, -0.796883, -17.4792, 0, 0, 1.69193, 1.30501, 0, -1.69193, 0, -0.5, 1.69193, 0, 0, -8.37492, -1.57716, 0, 0, -11.8673, 0, 0, -1.57716, 0.107529, 0, -1.57716, 0, -29.751, 1.32827, 0, 0, 4.36378, 0, -1.32827, 0, -0.5, 0, 0, -1.32827, -9.75853, 0.631724, 0, 0, 36.8503, 0, -0.631724, 0, -0.5, 0, 0, -0.631724, -15.1978, 0, 0, 1.21318, -16.5627, 0, -1.21318, 0, -0.5, 1.21318, 0, 0, -7.50961, -1.05875, 0, 0, 33.2009, 0, 1.05875, 0, 0.5, 0, 0, -1.05875, -25.7457, 1.28882, 0, 0, -3.79383, 0, -1.28882, 0, -0.5, 0, 0, -1.28882, -22.1051, 0, 0, -1.36798, 1.52771, 0, 1.36798, 0, 0.5, 1.36798, 0, 0, 11.2248, -0.826441, 0, 0, 14.5095, 0, 0.826441, 0, 0.5, 0, 0, -0.826441, -21.9684, 0, 0, 1.44301, -9.68463, 0, -1.44301, 0, -0.5, 1.44301, 0, 0, 26.3499, 0, 0, -1.46858, 40.7933, 0, 1.46858, 0, 0.5, 1.46858, 0, 0, 14.6923, 0, 0, -1.01997, 39.0223, 0, 1.01997, 0, 0.5, 1.01997, 0, 0, -26.4181, 0, 0, 1.02815, -3.06309, 0, -1.02815, 0, -0.5, 1.02815, 0, 0, -0.609291, 0, 0, -1.38307, 35.2237, 0, 1.38307, 0, 0.5, 1.38307, 0, 0, -12.9988, 0, 0, -0.5434, 28.8703, 0, 0.5434, 0, 0.5, 0.5434, 0, 0, 0.159675, 0.347772, 0, 0, 9.52367, 0, -0.347772, 0, -0.5, 0, 0, -0.347772, -4.88122, -0.4396, 0, 0, 29.5825, 0, 0.4396, 0, 0.5, 0, 0, -0.4396, -21.9944, 0.446963, 0, 0, 21.4889, 0, -0.446963, 0, -0.5, 0, 0, -0.446963, 4.24923, 0, 0, -1.40914, -13.1076, 0, 1.40914, 0, 0.5, 1.40914, 0, 0, 25.7209, 0, 0, 0.872424, 15.0584, 0, -0.872424, 0, -0.5, 0.872424, 0, 0, 25.5911, 0, 0, -0.866658, 14.7088, 0, 0.866658, 0, 0.5, 0.866658, 0, 0, -0.0152855, 0, 0, 0.798809, 8.77301, 0, -0.798809, 0, -0.5, 0.798809, 0, 0, 0.567917, -1.54507, 0, 0, -11.0819, 0, 1.54507, 0, 0.5, 0, 0, -1.54507, 6.90678, -1.10689, 0, 0, -11.8294, 0, 1.10689, 0, 0.5, 0, 0, -1.10689, -14.8315, -1.49799, 0, 0, -16.0862, 0, 1.49799, 0, 0.5, 0, 0, -1.49799, -21.333, 0, 0, -0.764782, 1.51515, 0, 0.764782, 0, 0.5, 0.764782, 0, 0, 15.7832, 0, 0, -1.69982, 33.5964, 0, 1.69982, 0, 0.5, 1.69982, 0, 0, 5.04249, 0, 0, 0.527736, 33.0124, 0, -0.527736, 0, -0.5, 0.527736, 0, 0, 29.9264, 0, 0, -0.645875, 28.9443, 0, 0.645875, 0, 0.5, 0.645875, 0, 0, 10.9872, 0, 0, -1.14569, 16.4189, 0, 1.14569, 0, 0.5, 1.14569, 0, 0, 17.3245, 1.66618, 0, 0, 10.5492, 0, -1.66618, 0, -0.5, 0, 0, -1.66618, -26.2969, 1.61343, 0, 0, 15.4969, 0, -1.61343, 0, -0.5, 0, 0, -1.61343, -0.448771, -1.27558, 0, 0, 7.28553, 0, 1.27558, 0, 0.5, 0, 0, -1.27558, -17.3608, 0, 0, 0.899211, -11.2557, 0, -0.899211, 0, -0.5, 0.899211, 0, 0, -5.4672, 0, 0, -0.738652, 31.6981, 0, 0.738652, 0, 0.5, 0.738652, 0, 0, -11.007, 1.18267, 0, 0, 18.9181, 0, -1.18267, 0, -0.5, 0, 0, -1.18267, -5.15142, -1.15965, 0, 0, -17.7669, 0, 1.15965, 0, 0.5, 0, 0, -1.15965, -11.5676, -0.756512, 0, 0, 15.3061, 0, 0.756512, 0, 0.5, 0, 0, -0.756512, -8.79933, 0, 0, -1.36943, 9.77337, 0, 1.36943, 0, 0.5, 1.36943, 0, 0, 27.2531, -1.05485, 0, 0, -16.6415, 0, 1.05485, 0, 0.5, 0, 0, -1.05485, 17.5722, 0.293334, 0, 0, 27.0233, 0, -0.293334, 0, -0.5, 0, 0, -0.293334, 2.60891, 0, 0, -0.764903, 26.4447, 0, 0.764903, 0, 0.5, 0.764903, 0, 0, -3.92077, 0, 0, -0.463048, 41.2263, 0, 0.463048, 0, 0.5, 0.463048, 0, 0, 10.358, 0.861678, 0, 0, 22.8176, 0, -0.861678, 0, -0.5, 0, 0, -0.861678, -12.9717, -1.281, 0, 0, -0.925138, 0, 1.281, 0, 0.5, 0, 0, -1.281, -20.1566, 0, 0, -1.17441, 26.731, 0, 1.17441, 0, 0.5, 1.17441, 0, 0, 25.2427, 1.58619, 0, 0, 36.6204, 0, -1.58619, 0, -0.5, 0, 0, -1.58619, 1.19805, 0, 0, -0.335362, 24.7121, 0, 0.335362, 0, 0.5, 0.335362, 0, 0, -5.5163, -0.514554, 0, 0, -7.6761, 0, 0.514554, 0, 0.5, 0, 0, -0.514554, -1.96633, 0, 0, -1.66123, 29.217, 0, 1.66123, 0, 0.5, 1.66123, 0, 0, -16.9873, 0, 0, -0.718305, 10.1309, 0, 0.718305, 0, 0.5, 0.718305, 0, 0, 21.6421, 0, 0.707614, 0, 41.4516, 0.707614, 0, 0, 0.40064, 0, 0, -0.707614, -16.0819, 0.554271, 0, 0, 22.6175, 0, -0.554271, 0, -0.5, 0, 0, -0.554271, 1.02831, 0, 0, -0.260005, 22.0733, 0, 0.260005, 0, 0.5, 0.260005, 0, 0, 0.962365, 0.979256, 0, 0, 5.01944, 0, 0, -0.979256, -0.155862, 0, 0.979256, 0, 30.249, 0, 0, -1.08428, 32.4852, 0, 1.08428, 0, 0.5, 1.08428, 0, 0, -12.0065, 0.974007, 0, 0, 24.3187, 0, -0.974007, 0, -0.5, 0, 0, -0.974007, -19.3076, 0, 0, -1.23253, 24.7536, 0, 1.23253, 0, 0.5, 1.23253, 0, 0, 15.1191, 0, 0, -1.19277, 25.7777, 0, 1.19277, 0, 0.5, 1.19277, 0, 0, 18.7701, 0, 0.926786, 0, 41.4516, 0.926786, 0, 0, 0.448372, 0, 0, -0.926786, 0.59775, -1.03608, 0, 0, -16.504, 0, 1.03608, 0, 0.5, 0, 0, -1.03608, -15.3312, 1.52455, 0, 0, 37.2773, 0, -1.52455, 0, -0.5, 0, 0, -1.52455, 21.9914, -0.765773, 0, 0, 22.5073, 0, 0.765773, 0, 0.5, 0, 0, -0.765773, -21.4352, 0, 0, 1.15101, 10.8118, 0, -1.15101, 0, -0.5, 1.15101, 0, 0, 29.4861, -1.56974, 0, 0, 0.560487, 0, 1.56974, 0, 0.5, 0, 0, -1.56974, -17.8922, 0.795299, 0, 0, 6.29196, 0, -0.795299, 0, -0.5, 0, 0, -0.795299, -7.47706, 0, 0, 0.519558, -16.7214, 0, -0.519558, 0, -0.5, 0.519558, 0, 0, 18.6591, -0.467943, 0, 0, 29.4595, 0, 0.467943, 0, 0.5, 0, 0, -0.467943, -21.9471, 0, 0, -0.839778, 23.7202, 0, 0.839778, 0, 0.5, 0.839778, 0, 0, 1.99364, -1.47702, 0, 0, 0.698431, 0, 1.47702, 0, 0.5, 0, 0, -1.47702, -15.3354, -0.770638, 0, 0, 34.0692, 0, 0.770638, 0, 0.5, 0, 0, -0.770638, -29.5373, 0, 0, 0.931124, 18.6351, 0, -0.931124, 0, -0.5, 0.931124, 0, 0, 16.0872, 0, 0, 1.73921, 9.72529, 0, -1.73921, 0, -0.5, 1.73921, 0, 0, 13.3021, 0, 0, -1.33742, 16.2957, 0, 1.33742, 0, 0.5, 1.33742, 0, 0, 7.95064, 0, 0, 1.72883, 10.8872, 0, -1.72883, 0, -0.5, 1.72883, 0, 0, 12.2792, 0.650649, 0, 0, 17.4726, 0, -0.650649, 0, -0.5, 0, 0, -0.650649, -0.183573, 0, 0, 0.704326, -2.9039, 0, -0.704326, 0, -0.5, 0.704326, 0, 0, 7.24223, 0, 0.589736, 0, 41.4516, 0.589736, 0, 0, 0.00728792, 0, 0, -0.589736, 22.8326, 0, 0, 0.921473, 1.03083, 0, -0.921473, 0, -0.5, 0.921473, 0, 0, 23.7275, 0, 0, -0.256504, 6.67186, 0, 0.256504, 0, 0.5, 0.256504, 0, 0, 11.1493, 0, 0, -0.903841, 26.9311, 0, 0.903841, 0, 0.5, 0.903841, 0, 0, 6.59077, 0, 0, -1.54168, 14.3279, 0, 1.54168, 0, 0.5, 1.54168, 0, 0, 30.1917, 1.52749, 0, 0, 11.8603, 0, -1.52749, 0, -0.5, 0, 0, -1.52749, -20.3036, 1.67539, 0, 0, 16.3136, 0, -1.67539, 0, -0.5, 0, 0, -1.67539, -4.2133, 0, 0, -0.382148, 36.2308, 0, 0.382148, 0, 0.5, 0.382148, 0, 0, 5.56833, 0.458684, 0, 0, 11.2629, 0, -0.458684, 0, -0.5, 0, 0, -0.458684, -0.618725, 0, 0, -1.41155, 10.6127, 0, 1.41155, 0, 0.5, 1.41155, 0, 0, 20.1224, 0, 0, -1.52204, -15.2715, 0, 1.52204, 0, 0.5, 1.52204, 0, 0, 28.9659, -1.32977, 0, 0, 9.59411, 0, 1.32977, 0, 0.5, 0, 0, -1.32977, -22.6197, 0, 0, 1.74852, -16.7503, 0, -1.74852, 0, -0.5, 1.74852, 0, 0, 22.0856, 0, 0, -1.46386, 32.3665, 0, 1.46386, 0, 0.5, 1.46386, 0, 0, -14.8456, 0, 0, 1.11168, 3.61844, 0, -1.11168, 0, -0.5, 1.11168, 0, 0, 1.36571, 0.735247, 0, 0, 26.2966, 0, -0.735247, 0, -0.5, 0, 0, -0.735247, -11.4355, 0, 0, 1.1936, 9.32462, 0, -1.1936, 0, -0.5, 1.1936, 0, 0, 25.7339, 1.05786, 0, 0, 31.3088, 0, -1.05786, 0, -0.5, 0, 0, -1.05786, -20.4197, 0, 0, -0.997626, 21.6, 0, 0.997626, 0, 0.5, 0.997626, 0, 0, 0.821292, 0.566316, 0, 0, 1.41962, 0, -0.566316, 0, -0.5, 0, 0, -0.566316, -21.6522, 0, 0, -0.385252, 21.0402, 0, 0.385252, 0, 0.5, 0.385252, 0, 0, 12.1785, -0.276649, 0, 0, -6.02503, 0, 0.276649, 0, 0.5, 0, 0, -0.276649, -16.3914, 0, 0, -0.490377, 33.7266, 0, 0.490377, 0, 0.5, 0.490377, 0, 0, 21.5438)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_77sx4"]
+size = Vector3(25.1408, 25.2087, 18.3951)
+
+[node name="Level1" type="Node3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Tutorial Text" parent="CanvasLayer" instance=ExtResource("1_wb4go")]
+
+[node name="Score" parent="CanvasLayer" instance=ExtResource("2_ssqex")]
+
+[node name="Victory Screen" parent="CanvasLayer" instance=ExtResource("3_37bo1")]
+visible = false
+
+[node name="NextLevel" parent="CanvasLayer/Victory Screen/VBoxContainer" index="0"]
+levelPath = ExtResource("4_1edtd")
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource("5_im3ll")]
+
+[node name="Restart" parent="CanvasLayer/Pause Menu/VBoxContainer" index="1" node_paths=PackedStringArray("controlsToHide")]
+controlsToHide = [NodePath("../..")]
+
+[node name="Loading Screen" parent="CanvasLayer" instance=ExtResource("6_ixi3v")]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_43wbx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+material_override = SubResource("StandardMaterial3D_1i3r6")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_evvx8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConvexPolygonShape3D_qhgvt")
+
+[node name="Floor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
+material_override = SubResource("StandardMaterial3D_1i3r6")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_evvx8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
+shape = SubResource("ConvexPolygonShape3D_qhgvt")
+
+[node name="Floor3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3"]
+material_override = SubResource("StandardMaterial3D_1i3r6")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_evvx8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3"]
+shape = SubResource("ConvexPolygonShape3D_qhgvt")
+
+[node name="LookAheadPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.559, 4.1049, 0)
+
+[node name="Player" parent="." instance=ExtResource("8_m0vly")]
+
+[node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode", "zoomToNode") instance=ExtResource("9_i7c4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.542, 12.009)
+player = NodePath("../Player")
+playerNode = NodePath("../Player")
+zoomToNode = NodePath("../LookAheadPoint")
+
+[node name="Background" type="Sprite3D" parent="."]
+transform = Transform3D(21.545, 0, 0, 0, 21.545, 0, 0, 0, 21.545, 0, 0, -79.0394)
+texture = ExtResource("10_r7riu")
+region_rect = Rect2(11.875, 0, 0, 0)
+
+[node name="Scarecrow" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0753, 12.3208, 0)
+pixel_size = 0.005
+texture = ExtResource("11_6h8ui")
+
+[node name="Head" parent="Scarecrow" instance=ExtResource("12_tq0sj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.201, 2.24, 0)
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.54839, 0, -0.248959)
+multimesh = SubResource("MultiMesh_huoi4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MultiMeshInstance3D"]
+mesh = ExtResource("13_d17y6")
+
+[node name="Text Update" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6923, 0, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Text Update"]
+shape = SubResource("BoxShape3D_77sx4")
+script = ExtResource("14_7plje")
+text = "Land on top of the Head!"
+
+[node name="Text Update2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.704762, 0, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Text Update2"]
+shape = SubResource("BoxShape3D_77sx4")
+script = ExtResource("14_7plje")
+text = "Click and Hold to Move!"
+
+[node name="ArrowPowerup" parent="." instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 0)
+spinSpeed = 3.0
+force = 300.0
+
+[node name="ArrowPowerup2" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 8, 0)
+invert = true
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup3" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 12, 0)
+spinSpeed = 1.8
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup4" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 16, 0)
+spinSpeed = 3.0
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup5" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 4, 0)
+spinSpeed = 1.9
+invert = true
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup6" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 8, 0)
+spinSpeed = 2.4
+invert = true
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup7" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 12, 0)
+spinSpeed = 2.6
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup8" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 16, 0)
+spinSpeed = 1.3
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup9" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, 0)
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup10" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 8, 0)
+spinSpeed = 2.4
+invert = true
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup11" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 12, 0)
+spinSpeed = 2.1
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup12" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 16, 0)
+spinSpeed = 1.5
+invert = true
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup13" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 4, 0)
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup14" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 8, 0)
+spinSpeed = 1.8
+invert = true
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup15" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 12, 0)
+spinSpeed = 1.0
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup16" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 16, 0)
+spinSpeed = 3.0
+invert = true
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup17" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 4, 0)
+spinSpeed = 2.6
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup18" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 8, 0)
+spinSpeed = 2.1
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup19" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 12, 0)
+spinSpeed = 1.7
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="ArrowPowerup20" parent="." node_paths=PackedStringArray("timer") instance=ExtResource("15_b60ie")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 16, 0)
+spinSpeed = 1.9
+force = 500.0
+timer = NodePath("../ArrowPowerup/Timer")
+
+[node name="Wall" parent="." instance=ExtResource("16_m6spi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.079, 5, 0)
+
+[connection signal="body_entered" from="Text Update" to="Text Update/CollisionShape3D" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="Text Update2" to="Text Update2/CollisionShape3D" method="_on_area_3d_body_entered"]
+
+[editable path="CanvasLayer/Victory Screen"]
+[editable path="CanvasLayer/Pause Menu"]
+[editable path="Player"]
