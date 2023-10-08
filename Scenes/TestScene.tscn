@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b8mfjdeh8pyw0"]
 
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="1_id3xg"]
-[ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="2_5ledm"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="2_5ledm"]
 [ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="3_otdt3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jdtid"]

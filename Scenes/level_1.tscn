@@ -3,12 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://c0f81dnfa477h" path="res://Art/dirt.png" id="1_82k5s"]
 [ext_resource type="PackedScene" uid="uid://c7mbxk8e8ah6o" path="res://Objects/player.tscn" id="1_inlvk"]
 [ext_resource type="PackedScene" uid="uid://b6yjq4hf2ttpk" path="res://Objects/camera_3d.tscn" id="2_u2uj4"]
-[ext_resource type="PackedScene" uid="uid://b2a7at5lkkjtn" path="res://Objects/head.tscn" id="3_qc1bh"]
-[ext_resource type="PackedScene" uid="uid://c52258ujjoaw0" path="res://UI Garbage/tutorial_text.tscn" id="4_1a5mh"]
+[ext_resource type="PackedScene" path="res://Objects/head.tscn" id="3_qc1bh"]
+[ext_resource type="PackedScene" path="res://UI Garbage/tutorial_text.tscn" id="4_1a5mh"]
 [ext_resource type="Texture2D" uid="uid://b3g4kkg2trqnf" path="res://Art/Skybox.png" id="5_gnd2d"]
 [ext_resource type="Texture2D" uid="uid://ch1l30pvudoqh" path="res://Art/scarecrow.png" id="6_1yxbf"]
 [ext_resource type="PackedScene" uid="uid://o5nn3yx2m30f" path="res://UI Garbage/VictoryScreen.tscn" id="7_ft728"]
-[ext_resource type="PackedScene" path="res://UI Garbage/PauseMenu.tscn" id="7_tn4xm"]
+[ext_resource type="PackedScene" uid="uid://bkgsave42kya2" path="res://UI Garbage/PauseMenu.tscn" id="7_tn4xm"]
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="8_101ua"]
 [ext_resource type="Script" path="res://Scenes/OnEnterUpdateTutorialText.gd" id="11_kffnf"]
 
@@ -163,11 +163,16 @@ mesh = SubResource("BoxMesh_evvx8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("ConvexPolygonShape3D_qhgvt")
 
+[node name="LookAheadPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.559, 4.1049, 0)
+
 [node name="Player" parent="." instance=ExtResource("1_inlvk")]
 
-[node name="Camera3D" parent="." instance=ExtResource("2_u2uj4")]
+[node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode", "zoomToNode") instance=ExtResource("2_u2uj4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.542, 12.009)
 player = NodePath("../Player")
+playerNode = NodePath("../Player")
+zoomToNode = NodePath("../LookAheadPoint")
 
 [node name="Background" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -79.0394)
