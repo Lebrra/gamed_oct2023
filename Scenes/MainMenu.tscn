@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ssw466w2x1t3"]
+[gd_scene load_steps=10 format=3 uid="uid://ssw466w2x1t3"]
 
 [ext_resource type="PackedScene" uid="uid://cg4b02c8rrycv" path="res://UI Garbage/LoadingScreen.tscn" id="1_3qium"]
 [ext_resource type="Theme" uid="uid://26mbkpxu32in" path="res://UI Garbage/UITheme.tres" id="1_7dma2"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/SceneLoadButton.cs" id="4_x8sk3"]
 [ext_resource type="PackedScene" uid="uid://dhf4mp4pk1k60" path="res://Scenes/level_1.tscn" id="5_akjgp"]
 [ext_resource type="PackedScene" uid="uid://lve1va6kh3br" path="res://Scenes/Level_2.tscn" id="6_0mjcb"]
-[ext_resource type="PackedScene" uid="uid://bnunx7baaap32" path="res://Scenes/Level_3.tscn" id="7_halui"]
+[ext_resource type="PackedScene" uid="uid://b6adp0gm3ypbj" path="res://Scenes/Level_3.tscn" id="7_halui"]
 [ext_resource type="Script" path="res://Scenes/UINavigation.gd" id="8_3d5bd"]
+[ext_resource type="PackedScene" uid="uid://d3hceet1q8uvm" path="res://Scenes/level_arrows.tscn" id="8_njjpq"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -96,6 +97,15 @@ icon = ExtResource("2_ugraa")
 expand_icon = true
 script = ExtResource("4_x8sk3")
 levelPath = ExtResource("7_halui")
+controlsToHide = [NodePath("../..")]
+
+[node name="Scene 4" type="Button" parent="Scene Selection/VBoxContainer" node_paths=PackedStringArray("controlsToHide")]
+layout_mode = 2
+text = "Level 4"
+icon = ExtResource("2_ugraa")
+expand_icon = true
+script = ExtResource("4_x8sk3")
+levelPath = ExtResource("8_njjpq")
 controlsToHide = [NodePath("../..")]
 
 [node name="Main" type="Control" parent="."]
